@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "soolah",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
