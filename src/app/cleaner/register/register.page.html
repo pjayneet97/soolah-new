@@ -1,0 +1,153 @@
+<ion-header *ngIf="mode=='register'">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline" text="" defaultHref="/" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title size="small" color="primary">Register</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="ion-padding-top ion-padding-bottom">
+
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+  <div *ngIf="mode=='register'">
+    <div class="ion-padding ion-text-center">
+      <img src="../../../assets/images/Soolah-new-logo-color.svg" alt="Soolah" width="96">
+    </div>
+
+
+      <ion-list class="ion-padding-horizontal">
+        <div class="custom-field floating">
+          <ion-input type="text" formControlName="firstName"></ion-input>
+          <ion-label position="floating">First Name</ion-label>
+        </div>
+        <div *ngIf="registerValidation.firstName.errors && registerValidation.firstName.dirty">
+          <ion-text color="danger" *ngIf="registerValidation.firstName?.errors?.required">
+            <p>Field is required!</p>
+          </ion-text>
+        </div>
+
+        <div class="custom-field floating">
+          <ion-input type="text" formControlName="lastName">
+          </ion-input>
+          <ion-label position="floating">Last Name</ion-label>
+        </div>
+        <div *ngIf="registerValidation.lastName.errors && registerValidation.lastName.dirty">
+          <ion-text color="danger" *ngIf="registerValidation.lastName?.errors?.required">
+            <p>Field is required!</p>
+          </ion-text>
+        </div>
+
+        <div class="custom-field floating">
+          <ion-input type="email" formControlName="email"></ion-input>
+          <ion-label position="floating">Email</ion-label>
+        </div>
+        <div *ngIf="registerValidation.email.errors && registerValidation.email.dirty">
+          <ion-text color="danger" *ngIf="registerValidation.email?.errors?.required">
+            <p>Field is required!</p>
+          </ion-text>
+          <ion-text color="danger" *ngIf="registerValidation.email?.errors?.pattern">
+            <p>Email must be a valid email address!</p>
+          </ion-text>
+        </div>
+
+        <!-- <div class="custom-field floating">
+
+          <ion-datetime value="1990-02-19" formControlName="dob" placeholder="Date of Birth" ></ion-datetime>
+
+        </div>
+        <div *ngIf="registerValidation.dob.errors && registerValidation.dob.dirty">
+          <ion-text color="danger" *ngIf="registerValidation.dob?.errors?.required">
+            <p>Field is required!</p>
+          </ion-text>
+        </div> -->
+
+        <div class="custom-field floating">
+          <ion-input type="password" formControlName="password">
+          </ion-input>
+          <ion-label position="floating">Password</ion-label>
+          <!-- <ion-button fill="clear" color="medium" (click)="presentToast()">
+            <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+          </ion-button> -->
+        </div>
+        <div *ngIf="registerValidation.password.errors && registerValidation.password.dirty">
+          <ion-text color="danger" *ngIf="registerValidation.password.errors?.required">
+            Password is required!
+          </ion-text>
+          <ion-text color="danger" *ngIf="registerValidation.password?.errors?.pattern">
+            Your password must be have at least!
+            <ul color="danger">
+              <li>Minimum 8 character</li>
+              <li>1 Uppercase & 1 lowercase character</li>
+              <li>1 Number</li>
+              <li>1 Special character</li>
+            </ul>
+          </ion-text>
+        </div>
+
+        <div class="custom-field floating">
+          <ion-input type="password" formControlName="confirmPassword" (keyup)="comparePassword()">
+          </ion-input>
+          <ion-label position="floating">Confirm Password</ion-label>
+          <!-- <ion-button fill="clear" color="medium" (click)="presentToast()">
+            <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+          </ion-button> -->
+        </div>
+        <div *ngIf="registerValidation.confirmPassword.errors && registerValidation.confirmPassword.dirty">
+          <ion-text color="danger" *ngIf="registerValidation.confirmPassword?.errors?.required">
+            Confirm the password!
+          </ion-text>
+        </div>
+        <ion-text color="danger" *ngIf="!comparePassword() && registerValidation.confirmPassword.dirty">
+          Password not match!
+        </ion-text>
+        <br>
+
+      </ion-list>
+
+      <div class="ion-padding-start ion-padding-end">
+      <!--   <ion-button type="submit" color="secondary" size="large" class="ion-no-margin btn-txt" expand="block"
+          text-align="center" [disabled]="registerForm.invalid">
+          Register</ion-button> -->
+          <ion-button [disabled]="!isRegisterFormValid()" color="secondary" size="large" class="ion-no-margin btn-txt" expand="block"
+          text-align="center" (click)="changemode()" >
+          Register</ion-button>
+      </div>
+
+
+  </div>
+
+  <div *ngIf="mode=='phone'">
+    <div class="rectangle">
+     <img class="logo" src="../../../assets/images/Soolah-new-logo-white.svg" width="200" alt="">
+    </div>
+    <div class="ion-padding ion-text-center phone-input">
+      <h4>Enter your Phone Number</h4>
+     <ion-grid >
+       <ion-row>
+         <ion-col size="2">
+          <div class="custom-field ">
+            <ion-input type="text" formControlName="countrycode"></ion-input>
+          </div>
+         </ion-col>
+         <ion-col size="10">
+          <div class="custom-field ">
+            <ion-input type="number" formControlName="phone"></ion-input>
+          </div>
+         </ion-col>
+       </ion-row>
+     </ion-grid>
+     <ion-button type="submit" color="secondary" size="large" class="ion-no-margin btn-txt" expand="block"
+     text-align="center" [disabled]="!isPhoneNumberValid()">
+     Get a Code</ion-button>
+    </div>
+
+  </div>
+
+</form>
+
+</ion-content>

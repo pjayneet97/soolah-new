@@ -1,0 +1,27 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" (click)="setCurrentTab('home')">
+      <ion-icon *ngIf="selectedTab == 'home'" src="../../assets/nav/home-active.svg"></ion-icon>
+      <ion-icon *ngIf="selectedTab != 'home'" src="../../assets/nav/home.svg"></ion-icon>
+      <ion-label [color]="selectedTab == 'home' ? 'secondary': 'primary'">Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="orders" (click)="setCurrentTab('orders')">
+      <ion-icon *ngIf="selectedTab == 'orders'" src="../../assets/nav/bookings-active.svg"></ion-icon>
+      <ion-icon *ngIf="selectedTab != 'orders'" src="../../assets/nav/bookings.svg"></ion-icon>
+      <ion-label [color]="selectedTab == 'cleaner' ? 'secondary': 'primary'">Bookings</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="payments" (click)="setCurrentTab('payments')">
+      <ion-icon *ngIf="selectedTab == 'payments'" src="../../assets/nav/payments-active.svg"></ion-icon>
+      <ion-icon *ngIf="selectedTab != 'payments'" src="../../assets/nav/payments.svg"></ion-icon>
+      <ion-label [color]="selectedTab == 'payments' ? 'secondary': 'primary'">Payments</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile" (click)="setCurrentTab('profile')">
+      <ion-icon *ngIf="selectedTab == 'profile'" src="../../assets/nav/settings-active.svg"></ion-icon>
+      <ion-icon *ngIf="selectedTab != 'profile'" src="../../assets/nav/settings.svg"></ion-icon>
+      <ion-label [color]="selectedTab == 'profile' ? 'secondary': 'primary'">Settings</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

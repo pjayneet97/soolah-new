@@ -1,0 +1,12 @@
+ion-toolbar {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+ion-title{
+    display:inline-flex;
+    position: static;
+}
+ion-avatar{
+    display: inline-flex;
+}

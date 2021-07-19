@@ -1,0 +1,48 @@
+<ion-header >
+  <ion-toolbar color="medium">
+  <!--   <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline" text="" defaultHref="/" color="primary"></ion-back-button>
+    </ion-buttons> -->
+    <ion-title size="small" color="primary">Home</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="ion-padding ion-text-center">
+    <img src="../../../assets/images/Soolah-new-logo-color.svg" alt="Soolah" width="96">
+  </div>
+
+  <div class="ion-padding ">
+    <ion-card color="medium" class="ion-text-center dark-color ion-padding-bottom card-border-radius">
+      <ion-card-header>
+        <img class="img-round" width="50" height="50" src="../../../assets/images/avatar.png" alt="">
+
+        <ion-card-title>
+         <div>   <ion-icon color="light" name="star"></ion-icon> 0.0  </div>
+          Welcome {{profile?.firstName}} {{profile?.lastName}}
+
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content routerLink="/cleaner/notifications">
+        <h1 class="text-big">0</h1>
+        <h3>Jobs</h3>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+  <div class="ion-padding ">
+
+    <ion-button *ngIf="isProfileComplete()" class="btn-txt" expand="block" color="secondary"   shape="round">
+      Set Your Availability
+    </ion-button>
+    <ion-button  *ngIf="!isProfileComplete()" class="btn-txt" expand="block" color="secondary" routerLink="/cleaner/profile"   shape="round">
+      Please Complete your profile
+    </ion-button>
+
+  </div>
+
+</ion-content>

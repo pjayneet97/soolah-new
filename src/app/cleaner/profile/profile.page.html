@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- <ion-title class="ion-text-center">
+      Settings
+    </ion-title> -->
+    <div class="ion-margin-top ion-margin-bottom ion-text-center">
+      <h6 class="ion-margin-top  ion-margin-bottom">Settings</h6>
+      <ion-avatar>
+        <img src="../../../assets/images/avatar.png" width="64">
+      </ion-avatar>
+    </div>
+  <ion-row>
+      <ion-col>
+        <ion-button fill="clear" style="font-size:small;color: #fff;" routerLink="/cleaner/change-password">
+          Change Password
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <ion-button fill="clear" style="font-size:small;color: #fff;" (click)="logout()">
+          Logout
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-bottom">
+  <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+    <ion-list lines="full" class="ion-padding-horizontal">
+      <div class="custom-field floating">
+        <ion-input type="text" formControlName="firstName">
+        </ion-input>
+        <ion-label position="floating">First Name</ion-label>
+      </div>
+      <div *ngIf="validation.firstName.errors && validation.firstName.dirty">
+        <ion-text color="danger" *ngIf="validation.firstName?.errors?.required">
+          <p>Field is required!</p>
+        </ion-text>
+      </div>
+
+      <div class="custom-field floating">
+        <ion-input type="text" formControlName="lastName">
+        </ion-input>
+        <ion-label position="floating">Last Name</ion-label>
+      </div>
+      <div *ngIf="validation.lastName.errors && validation.lastName.dirty">
+        <ion-text color="danger" *ngIf="validation.lastName?.errors?.required">
+          <p>Field is required!</p>
+        </ion-text>
+      </div>
+
+      <div class="custom-field floating">
+        <ion-input type="text" formControlName="email" readonly></ion-input>
+        <ion-label position="floating">Email</ion-label>
+      </div>
+
+      <div class="custom-field floating">
+        <ion-input type="text" formControlName="phone">
+        </ion-input>
+        <ion-label position="floating">Phone</ion-label>
+      </div>
+      <div *ngIf="validation.phone.errors && validation.phone.dirty">
+        <ion-text color="danger" *ngIf="validation.phone?.errors?.required">
+          <p>Field is required!</p>
+        </ion-text>
+        <ion-text color="danger" *ngIf="validation.phone?.errors?.pattern">
+          <p>Please enter country code!</p>
+        </ion-text>
+      </div>
+
+      <div class="custom-field floating">
+        <ion-input type="address" formControlName="address"></ion-input>
+        <ion-label position="floating">Address</ion-label>
+      </div>
+      <div class="custom-field floating">
+        <ion-input type="text" formControlName="city"></ion-input>
+        <ion-label position="floating">City</ion-label>
+      </div>
+
+       <div>
+         <h6> Have you moved in Past Two years  ?</h6>
+         <div class="flex">
+            <input type="radio" id="yes" formControlName="movedInLastTwoYears" [value]="true">
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" formControlName="movedInLastTwoYears" [value]="false">
+            <label for="no">No</label>
+          </div>
+       </div>
+
+
+       <div>
+        <h6> Do you have a criminal record?  ?</h6>
+        <div class="flex">
+           <input type="radio" id="yes" formControlName="criminalRecord" [value]="true">
+           <label for="yes">Yes</label>
+           <input type="radio" id="no" formControlName="criminalRecord" [value]="false">
+           <label for="no">No</label>
+         </div>
+      </div>
+
+
+
+      <div>
+        <h6> Do you have professional cleaning experience? </h6>
+        <div class="flex">
+           <input type="radio" id="yes" formControlName="professionalCleaningExperience" [value]="true">
+           <label for="yes">Yes</label>
+           <input type="radio" id="no" formControlName="professionalCleaningExperience" [value]="false">
+           <label for="no">No</label>
+         </div>
+      </div>
+
+      <div class="custom-field floating">
+        <ion-input disabled type="text" ></ion-input>
+        <ion-label position="floating">Stripe Account Link</ion-label>
+      </div>
+
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button type="submit" color="secondary" size="large" class="ion-no-margin" expand="block"
+        [disabled]="!formData.valid">
+        Update</ion-button>
+    </div>
+
+  </form>
+</ion-content>

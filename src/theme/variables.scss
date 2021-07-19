@@ -4,7 +4,7 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #024A83;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -12,7 +12,7 @@
   --ion-color-primary-tint: #4c8dff;
 
   /** secondary **/
-  --ion-color-secondary: #3dc2ff;
+  --ion-color-secondary: #43C2F4;
   --ion-color-secondary-rgb: 61, 194, 255;
   --ion-color-secondary-contrast: #ffffff;
   --ion-color-secondary-contrast-rgb: 255, 255, 255;
@@ -20,7 +20,7 @@
   --ion-color-secondary-tint: #50c8ff;
 
   /** tertiary **/
-  --ion-color-tertiary: #5260ff;
+  --ion-color-tertiary: rgba(195, 230, 243, 0.8);;
   --ion-color-tertiary-rgb: 82, 96, 255;
   --ion-color-tertiary-contrast: #ffffff;
   --ion-color-tertiary-contrast-rgb: 255, 255, 255;
@@ -52,7 +52,7 @@
   --ion-color-danger-tint: #ed576b;
 
   /** dark **/
-  --ion-color-dark: #222428;
+  --ion-color-dark: #000000;
   --ion-color-dark-rgb: 34, 36, 40;
   --ion-color-dark-contrast: #ffffff;
   --ion-color-dark-contrast-rgb: 255, 255, 255;
@@ -60,20 +60,31 @@
   --ion-color-dark-tint: #383a3e;
 
   /** medium **/
-  --ion-color-medium: #92949c;
+  --ion-color-medium:rgba(249, 249, 249, 0.94);;
   --ion-color-medium-rgb: 146, 148, 156;
   --ion-color-medium-contrast: #ffffff;
   --ion-color-medium-contrast-rgb: 255, 255, 255;
   --ion-color-medium-shade: #808289;
   --ion-color-medium-tint: #9d9fa6;
-
+ 
   /** light **/
-  --ion-color-light: #f4f5f8;
+  --ion-color-light: #ABABAB;
+  // --ion-color-light: #f4f5f8;
   --ion-color-light-rgb: 244, 245, 248;
   --ion-color-light-contrast: #000000;
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** form color **/
+  --ion-form-primary: #F1F1F1;
+  --ion-form-primary-contrast: #fff;
+
+  /** font size **/
+  --ion-primary-font-size: 14px;
+  --ion-secondary-font-size: 16px;
+  --ion-tertiary-font-size: 18px;
+
 }
 
 @media (prefers-color-scheme: dark) {

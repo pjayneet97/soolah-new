@@ -1,0 +1,101 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar color="medium">
+      <ion-buttons slot="start">
+        <ion-back-button icon="arrow-back-outline" text="" defaultHref="/" color="primary"></ion-back-button>
+      </ion-buttons>
+      <ion-title size="small" color="primary">Login</ion-title>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Login Form -->
+  <ion-content class="ion-padding-bottom ion-padding-top">
+    <div class="ion-padding ion-text-center">
+      <img src="../../../assets/images/Soolah-new-logo-color.svg" alt="Soolah" width="96">
+    </div>
+
+    <div *ngIf="isPlatformApple()" class="ion-padding-start ion-padding-bottom ion-padding-end">
+      <ion-button type="button" color="dark" size="large" expand="block">
+        <ion-icon name="logo-apple" slot="start"></ion-icon>
+        <small>Continue with Apple Id</small>
+      </ion-button>
+    </div>
+    <div class="ion-padding-start ion-padding-bottom ion-padding-end">
+      <ion-button (click)="googleSignIn()" type="button" class="bg-google" color="none" size="large" expand="block">
+        <ion-icon name="logo-google" slot="start"></ion-icon>
+        <small>Continue with google</small>
+      </ion-button>
+    </div>
+
+    <br>
+
+    <ion-col size="12" class="ion-no-padding">
+      <ion-row>
+        <ion-col class="ion-no-padding ion-padding-top" size="4">
+          <div class="line"></div>
+        </ion-col>
+
+        <ion-col size="4" class="ion-text-center ion-padding-bottom">
+          <small> OR </small>
+        </ion-col>
+
+        <ion-col class="ion-no-padding ion-padding-top" size="4">
+          <div class="line"></div>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" method="post">
+      <ion-list lines="full" class="ion-padding-horizontal">
+        <div class="custom-field floating">
+          <ion-input type="text" formControlName="email" required></ion-input>
+          <ion-label position="floating">Email</ion-label>
+        </div>
+        <div *ngIf="loginValidation.email.errors && loginValidation.email.dirty">
+          <ion-text color="danger" *ngIf="loginValidation.email?.errors?.required">
+            <p>Field is required!</p>
+          </ion-text>
+          <ion-text color="danger" *ngIf="loginValidation.email?.errors?.pattern">
+            <p>Email must be a valid email address!</p>
+          </ion-text>
+        </div>
+
+        <div class="custom-field floating">
+          <ion-input type="password" formControlName="password" required></ion-input>
+          <ion-label position="floating">Password</ion-label>
+          <div *ngIf="loginValidation.password.errors && loginValidation.password.dirty">
+            <ion-text color="danger" *ngIf="loginValidation.password?.errors?.required">
+              <p>Field is required!</p>
+            </ion-text>
+          </div>
+        </div>
+      </ion-list>
+
+      <div class="ion-padding-horizontal ion-padding-bottom ion-text-right">
+        <a routerLink="/customer/forget-password">Forgot Password?</a>
+      </div>
+
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          <ion-col size="6" class="ion-no-padding">
+            <ion-button class="btn-txt ion-padding" type="submit" size="small" expand="block" color="secondary"
+              text-align="center" [disabled]="!loginForm.valid">
+              Login</ion-button>
+          </ion-col>
+          <ion-col size="6" class="ion-no-padding">
+            <ion-button class="btn-txt ion-padding" routerLink="/customer/register" size="small" expand="block"
+              color="primary" text-align="center">
+              Register</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+
+    <br> <br>
+
+  </ion-content>
+
+
+</ion-app>

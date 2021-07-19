@@ -1,0 +1,141 @@
+<ion-header background-color="medium">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline" color="primary" defaultHref="//auth">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title size="small" color="primary">
+      Packages
+    </ion-title>
+  </ion-toolbar>
+  <ion-segment (ionChange)="segmentChanged($event)" value="luxurious">
+    <ion-segment-button value="luxurious">
+      <ion-label>Luxurious</ion-label>
+
+    </ion-segment-button>
+    <ion-segment-button value="basic">
+      <ion-label>Basic</ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+</ion-header>
+
+<ion-content mode="md" class="ion-padding-bottom">
+  <div *ngIf="mode=='luxurious'">
+
+    <ion-card color="medium" class="ion-text-center dark-color ion-padding-bottom card-border-radius">
+      <ion-card-header class="ion-no-padding">
+        <img class="img-card" src="../../../assets/images/meg.png" alt="">
+        <ion-card-title>Luxurious</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h3>4 + <span>
+            <ion-icon name="star" color="primary"></ion-icon>
+          </span> <span>
+            <ion-icon name="star" color="primary"></ion-icon>
+          </span> <span>
+            <ion-icon name="star" color="primary"></ion-icon>
+          </span> <span>
+            <ion-icon name="star" color="primary"></ion-icon>
+          </span> Cleaners</h3>
+
+          <br> <br>
+
+          <h1> $30.00 /Hour</h1>
+      </ion-card-content>
+
+       
+    </ion-card>
+
+    <ion-card class="ion-text-center dark-color card-border-radius">
+      <ion-card-content>
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="2">
+              <ion-button size="small" class="ion-no-padding">
+                <ion-icon slot="icon-only"  class="ion-no-padding" name="add"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col class="ion-text-left ion-padding-start" size="10">
+              <ion-text color="primary">Add Cleaning Supplies
+                <br> <ion-text color="light"> One Time Fee : $ 15.00</ion-text>
+              </ion-text>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card-content>      
+    </ion-card>
+    <div class="ion-padding">
+      <ion-button routerLink="/customer/select-cleaner" class="btn-txt" expand="block" color="secondary" shape="round">
+        Continue
+      </ion-button>
+    </div>
+
+  </div>
+
+
+  <div *ngIf="mode=='basic'">
+    <ion-card color="medium" class="ion-text-center dark-color ion-padding-bottom card-border-radius">
+      <ion-card-header class="ion-no-padding">
+        <img class="img-card" src="../../../assets/images/meg.png" alt="">
+        <ion-card-title>Basic</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h3>4 <span>
+            <ion-icon name="star" color="primary"></ion-icon>
+          </span> <span>
+            <ion-icon name="star" color="primary"></ion-icon>
+          </span> <span>
+            <ion-icon name="star" color="primary"></ion-icon>
+          </span> <span>
+            <ion-icon name="star" color="primary"></ion-icon>
+          </span> or lower ranking cleaners</h3>
+
+          <br> <br>
+
+          <h1> $25.00 /Hour</h1>
+      </ion-card-content>
+
+       
+    </ion-card>
+
+   <!--  <ion-card class="ion-text-center dark-color card-border-radius">
+      <ion-card-content>
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="2">
+              <ion-button size="small" class="ion-no-padding">
+                <ion-icon slot="icon-only"  class="ion-no-padding" name="add"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col class="ion-text-left ion-padding-start" size="10">
+              <ion-text color="primary">Add Cleaning Supplies
+                <br> <ion-text color="light"> One Time Fee : $ 15.00</ion-text>
+              </ion-text>
+
+            </ion-col> 
+          </ion-row>
+        </ion-grid>
+
+      </ion-card-content>      
+    </ion-card> -->
+    <div class="ion-padding">
+      <ion-button routerLink="/customer/select-cleaner" class="btn-txt" expand="block" color="secondary" shape="round">
+        Continue
+      </ion-button>
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+</ion-content>

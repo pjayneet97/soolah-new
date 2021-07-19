@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <div class="logo-wrapper ion-padding ion-text-center">
+      <img src="../../../assets/images/Soolah-new-logo-white.svg" alt="Soolah" width="250">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding-horizontal">
+    <h3 class="ion-margin-top ion-text-center">Enter the 6 digit code sent to your phone number</h3>
+    <div class="one-digit-fields ion-padding-vertical">
+      <ion-input class="one-digit-input ion-padding" #otp1 required="true" maxLength="1" [(ngModel)]="OTP[0]"
+        (keyup)="otpController($event,otp2,'')">
+      </ion-input>
+      <ion-input class="one-digit-input ion-padding" #otp2 required="true" maxLength="1" [(ngModel)]="OTP[1]"
+        (keyup)="otpController($event,otp3,otp1)">
+      </ion-input>
+      <ion-input class="one-digit-input ion-padding" #otp3 required="true" maxLength="1" [(ngModel)]="OTP[2]"
+        (keyup)="otpController($event,otp4,otp2)">
+      </ion-input>
+      <ion-input class="one-digit-input ion-padding" #otp4 required="true" maxLength="1" [(ngModel)]="OTP[3]"
+        (keyup)="otpController($event,otp5,otp3)">
+      </ion-input>
+      <ion-input class="one-digit-input ion-padding" #otp5 required="true" maxLength="1" [(ngModel)]="OTP[4]"
+        (keyup)="otpController($event,otp6,otp4)">
+      </ion-input>
+      <ion-input class="one-digit-input ion-padding" #otp6 required="true" maxLength="1" [(ngModel)]="OTP[5]"
+        (keyup)="otpController($event,otp6,otp5)">
+      </ion-input>
+    </div>
+    <div class="ion-padding-horizontal ion-padding-bottom ion-text-right">
+      <a (click)="resendOtp()">Resend OTP?</a>
+    </div>
+    <div class="ion-margin-top">
+      <ion-button color="secondary" size="large" expand="block" [disabled]="!OTP[5]" (click)="submitOtp()">Done</ion-button>
+    </div>
+  </div>
+</ion-content>

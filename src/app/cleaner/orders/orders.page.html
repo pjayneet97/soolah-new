@@ -1,0 +1,285 @@
+<ion-header class="bg-medium">
+  <ion-toolbar color="medium">
+<!--     <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline" text="" defaultHref="/" color="primary"></ion-back-button>
+    </ion-buttons> -->
+    <ion-title size="small" color="primary">Orders</ion-title>
+  </ion-toolbar>
+  <ion-segment scrollable color="secondary" value="upcoming" (ionChange)="segmentChanged($event)">
+    <ion-segment-button size="small" value="upcoming">
+      <ion-label color="primary" size="small">Upcoming</ion-label>
+    </ion-segment-button>
+    <ion-segment-button size="small" value="active">
+      <ion-label color="primary" size="small">Active</ion-label>
+    </ion-segment-button>
+    <ion-segment-button size="small" value="completed">
+      <ion-label color="primary" size="small">Completed</ion-label>
+    </ion-segment-button>
+    <ion-segment-button size="small" value="cancelled">
+      <ion-label color="primary" size="small">Cancelled</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ng-container *ngIf="segmentvalue=='upcoming'">
+    <ng-container *ngIf="false">
+      <div class="ion-padding ion-text-center">
+        <img src="../../../assets/images/Soolah-new-logo-color.svg" alt="Soolah" width="96" />
+      </div>
+
+      <div>
+        <ion-card color="medium" class="
+            ion-text-center
+            dark-color
+            ion-padding-bottom
+            card-border-radius
+          ">
+          <ion-card-header>
+            <img class="img-round" width="50" height="50" src="../../../assets/images/avatar.png" alt="" />
+            <ion-card-title>
+              <div>
+                <ion-icon color="light" name="star"></ion-icon> 0.0
+              </div>
+              <small> Sara Doe </small>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h1 class="text-big">0</h1>
+            <h1 class="text-big">Orders</h1>
+            <small> We will notify you asap !</small>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ng-container>
+
+    <ng-container>
+      <ion-card color="medium" class="ion-text-center dark-color card-border-radius">
+        <ion-card-content class="ion-no-padding">
+          <ion-grid class="ion-no-padding" fixed>
+            <ion-row class="ion-no-padding">
+              <ion-col class="ion-no-padding" size="8">
+                <div class="display-flex ion-padding-top ion-padding-start">
+                  <img src="../../../assets/images/Soolah-new-logo-color.svg" class="img-round" alt="Soolah" width="30"
+                    height="30" />
+                  <b class="ion-margin-start text-small"> Robin Customer </b>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small>Residential</small>
+                  <ion-button class="btn" size="small" color="secondary" shape="round">Upcoming
+                  </ion-button>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small> Moday 24th August 2019 </small>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small> 11:00 am to 11:00 pm </small>
+                </div>
+              </ion-col>
+              <ion-col size="4">
+                <img src="../../../assets/images/map.png" height="150px" alt="" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="segmentvalue=='active'">
+    <ng-container *ngIf="false">
+      <div class="ion-padding ion-text-center">
+        <img src="../../../assets/images/Soolah-new-logo-color.svg" alt="Soolah" width="96" />
+      </div>
+
+      <div>
+        <ion-card color="medium" class="
+            ion-text-center
+            dark-color
+            ion-padding-bottom
+            card-border-radius
+          ">
+          <ion-card-header>
+            <img class="img-round" width="50" height="50" src="../../../assets/images/avatar.png" alt="" />
+            <ion-card-title>
+              <div>
+                <ion-icon color="light" name="star"></ion-icon> 0.0
+              </div>
+              <small> Sara Doe </small>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h1 class="text-big">0</h1>
+            <h1 class="text-big">Orders</h1>
+            <small> We will notify you asap !</small>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ng-container>
+
+    <ng-container>
+      <ion-card color="medium" class="ion-text-center dark-color card-border-radius">
+        <ion-card-content class="ion-no-padding">
+          <ion-grid class="ion-no-padding" fixed>
+            <ion-row class="ion-no-padding">
+              <ion-col class="ion-no-padding" size="8">
+                <div class="display-flex ion-padding-top ion-padding-start">
+                  <img src="../../../assets/images/Soolah-new-logo-color.svg" class="img-round" alt="Soolah" width="30"
+                    height="30" />
+                  <b class="ion-margin-start text-small"> Robin Customer </b>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small>Residential</small>
+                  <ion-button class="btn" size="small" color="secondary" shape="round">Active
+                  </ion-button>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small> Moday 24th August 2019 </small>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small> 11:00 am to 11:00 pm </small>
+                </div>
+              </ion-col>
+              <ion-col size="4">
+                <img src="../../../assets/images/map.png" height="150px" alt="" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="segmentvalue=='completed'">
+    <ng-container *ngIf="false">
+      <div class="ion-padding ion-text-center">
+        <img src="../../../assets/images/Soolah-new-logo-color.svg" alt="Soolah" width="96" />
+      </div>
+
+      <div>
+        <ion-card color="medium" class="
+            ion-text-center
+            dark-color
+            ion-padding-bottom
+            card-border-radius
+          ">
+          <ion-card-header>
+            <img class="img-round" width="50" height="50" src="../../../assets/images/avatar.png" alt="" />
+            <ion-card-title>
+              <div>
+                <ion-icon color="light" name="star"></ion-icon> 0.0
+              </div>
+              <small> Sara Doe </small>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h1 class="text-big">0</h1>
+            <h1 class="text-big">Orders</h1>
+            <small> We will notify you asap !</small>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ng-container>
+
+    <ng-container>
+      <ion-card color="medium" class="ion-text-center dark-color card-border-radius">
+        <ion-card-content class="ion-no-padding">
+          <ion-grid class="ion-no-padding" fixed>
+            <ion-row class="ion-no-padding">
+              <ion-col class="ion-no-padding" size="8">
+                <div class="display-flex ion-padding-top ion-padding-start">
+                  <img src="../../../assets/images/Soolah-new-logo-color.svg" class="img-round" alt="Soolah" width="30"
+                    height="30" />
+                  <b class="ion-margin-start text-small"> Robin Customer </b>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small>Residential</small>
+                  <ion-button class="btn" size="small" color="secondary" shape="round">Completed
+                  </ion-button>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small> Moday 24th August 2019 </small>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small> 11:00 am to 11:00 pm </small>
+                </div>
+              </ion-col>
+              <ion-col size="4">
+                <img src="../../../assets/images/map.png" height="150px" alt="" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="segmentvalue=='cancelled'">
+    <ng-container *ngIf="false">
+      <div class="ion-padding ion-text-center">
+        <img src="../../../assets/images/Soolah-new-logo-color.svg" alt="Soolah" width="96" />
+      </div>
+
+      <div>
+        <ion-card color="medium" class="
+            ion-text-center
+            dark-color
+            ion-padding-bottom
+            card-border-radius
+          ">
+          <ion-card-header>
+            <img class="img-round" width="50" height="50" src="../../../assets/images/avatar.png" alt="" />
+            <ion-card-title>
+              <div>
+                <ion-icon color="light" name="star"></ion-icon> 0.0
+              </div>
+              <small> Sara Doe </small>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h1 class="text-big">0</h1>
+            <h1 class="text-big">Orders</h1>
+            <small> We will notify you asap !</small>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ng-container>
+
+    <ng-container>
+      <ion-card color="medium" class="ion-text-center dark-color card-border-radius">
+        <ion-card-content class="ion-no-padding">
+          <ion-grid class="ion-no-padding" fixed>
+            <ion-row class="ion-no-padding">
+              <ion-col class="ion-no-padding" size="8">
+                <div class="display-flex ion-padding-top ion-padding-start">
+                  <img src="../../../assets/images/Soolah-new-logo-color.svg" class="img-round" alt="Soolah" width="30"
+                    height="30" />
+                  <b class="ion-margin-start text-small"> Robin Customer </b>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small>Residential</small>
+                  <ion-button class="btn" size="small" color="secondary" shape="round">Cancelled
+                  </ion-button>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small> Moday 24th August 2019 </small>
+                </div>
+                <div class="display-flex ion-padding-start">
+                  <small> 11:00 am to 11:00 pm </small>
+                </div>
+              </ion-col>
+              <ion-col size="4">
+                <img src="../../../assets/images/map.png" height="150px" alt="" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ng-container>
+
+
+</ion-content>

@@ -1,0 +1,17 @@
+.welcome-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 54px);
+}
+
+.card-border-radius {
+    border-radius: 20px !important;
+    box-shadow:4px 4px 22px rgb(0 0 0 / 20%) !important;
+}
+
+
+
+h2 {
+    font-weight: bold;
+}
