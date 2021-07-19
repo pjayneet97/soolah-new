@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "80751542978",
+    "project_id": "soolah-43146",
+    "storage_bucket": "soolah-43146.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80751542978:android:81119e9081917bfaea715b",
+        "android_client_info": {
+          "package_name": "com.soolah.cleanerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80751542978-ikvqmv6t41a4s4m2fkof2ppbp5uptd8u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.soolah.cleanerapp",
+            "certificate_hash": "96f3dde4a9e304180da3ed5cec6df76971d8a3ca"
+          }
+        },
+        {
+          "client_id": "80751542978-aqdi35mtp08o9jclhqnlnkqirgp7oaav.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2UHORmJHtE_bfb9c3FJ7Bg0_GoJgy-dI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80751542978-aqdi35mtp08o9jclhqnlnkqirgp7oaav.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

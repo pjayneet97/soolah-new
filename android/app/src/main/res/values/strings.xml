@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">soolah</string>
+    <string name="title_activity_main">soolah</string>
+    <string name="package_name">com.soolah.cleanerapp</string>
+    <string name="custom_url_scheme">com.soolah.cleanerapp</string>
+    <string name="server_client_id">80751542978-aqdi35mtp08o9jclhqnlnkqirgp7oaav.apps.googleusercontent.com</string>
+</resources>
