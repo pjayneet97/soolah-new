@@ -61,14 +61,14 @@ export class AuthPage implements OnInit {
   }
 
   async googleSignIn() {
-   const googleUser = (await Plugins.GoogleAuth.signIn(null)) as any;
+  const googleUser = (await Plugins.GoogleAuth.signIn(null)) as any;
    console.log('my user: ', googleUser);
     this.common.startLoader();
-    //alert(googleUser)
-   /*  let emailpart="lucky.soni291298@gmail.com" */
+    /* alert(googleUser) */
+    let emailpart=googleUser.email
     this.service
       .login({
-        email:googleUser.email,
+        email:emailpart,
         role: 'cleaner',
         signUpWithGoogle: true,
         signUpWithApple: false,
@@ -77,7 +77,7 @@ export class AuthPage implements OnInit {
       }).subscribe(
         (res: any) => {
           if(res.data.firstTimeUser) {
-            this.router.navigate(['/cleaner/register'],{ queryParams: { email: googleUser.email,signUpWithGoogle:true}});
+            this.router.navigate(['/cleaner/register'],{ queryParams: { email: emailpart,signUpWithGoogle:true}});
             this.common.stopLoader();
           }
           else {
@@ -89,7 +89,13 @@ export class AuthPage implements OnInit {
           }
         },
         (err) => {
-        console.log(err)
+          console.log(err)
+          this.common.stopLoader()
+          if(err.error.code==400) {
+            this.router.navigate(['/cleaner/register'],{ queryParams: { email: emailpart,signUpWithGoogle:true}});
+            this.common.stopLoader();
+          }
+          this.common.errorHandler(err.error)
         }
       );
     //alert(JSON.stringify(googleUser))

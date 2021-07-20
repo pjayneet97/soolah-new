@@ -5,6 +5,7 @@ import { CommonService } from 'src/app/services/common.service';
 import { CleanerService } from '../cleaner.service';
 import '@codetrix-studio/capacitor-google-auth';
 import { Plugins } from '@capacitor/core';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -55,7 +56,7 @@ export class RegisterPage implements OnInit {
       ],
       /*   address: [''],
         city: [''],*/
-      countrycode: ['+91'],
+      countrycode: [environment.countrycode],
       // dob: ['', [Validators.required]],
       role: [this.role, [Validators.required]],
       lattitude: [0, []],
@@ -97,7 +98,7 @@ export class RegisterPage implements OnInit {
 
   register() {
     this.common.startLoader();
-    this.registerForm.value.phone = '+91' + this.registerForm.value.phone;
+    this.registerForm.value.phone = environment.countrycode + this.registerForm.value.phone;
     let data = this.registerForm.value;
     delete data.confirmPassword;
     delete data.countrycode;

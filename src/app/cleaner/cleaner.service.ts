@@ -60,6 +60,12 @@ export class CleanerService {
     return this.http.post(environment.baseUrl + '/api/v1/account/updateUserDetails', data)
   }
 
+  updateUserProfilePic(data) {
+    return this.http.post(environment.baseUrl + '/api/v1/account/updateProfilePic', data)
+  }
+
+
+
 
   getProfile() {
     return this.http.get(environment.baseUrl + '/api/v1/account/profile')

@@ -11,7 +11,7 @@ import { CleanerService } from '../cleaner.service';
 export class ProfilePage implements OnInit {
   role: string = "cleaner"
   formData: FormGroup;
-
+  profile:any
   constructor(public fb: FormBuilder, public service: CleanerService, public common: CommonService) {
     this.formData = this.fb.group({
       firstName: ['', [Validators.required]],
@@ -43,10 +43,33 @@ export class ProfilePage implements OnInit {
     this.getData()
   }
 
+
+  imageselected(event:any) {
+    console.log(event.target.files[0])
+    this.updateprofilepic(event.target.files[0])
+  }
+
+
+  updateprofilepic(imgfile) {
+     const uFrm = new FormData();
+     uFrm.append("profilePic",imgfile)
+     this.service.updateUserProfilePic(uFrm).subscribe(res=>{
+       console.log(res)
+       this.getData()
+     },error=>{
+      console.log(error)
+      this.common.stopLoader()
+      this.common.errorHandler(error.error)
+     })
+  }
+
+
+
   getData() {
     this.service.getProfile().subscribe((res: any) => {
       console.log("get data", res)
       let data = res.data
+      this.profile=data
       this.formData = this.fb.group({
         firstName: [data?.firstName, [Validators.required]],
         lastName: [data?.lastName, [Validators.required]],

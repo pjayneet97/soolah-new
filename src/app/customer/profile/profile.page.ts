@@ -11,7 +11,8 @@ import { CustomerService } from '../customer.service';
 export class ProfilePage implements OnInit {
   role: string = "customer"
   formData: FormGroup;
-
+  profile:any
+  imgfile:any
   constructor(public fb: FormBuilder, public service: CustomerService, public common: CommonService) {
     this.formData = this.fb.group({
       firstName: ['', [Validators.required]],
@@ -38,12 +39,30 @@ export class ProfilePage implements OnInit {
     this.getData()
   }
 
+  imageselected(event:any) {
+    console.log(event.target.files[0])
+    this.updateprofilepic(event.target.files[0])
+  }
 
+
+  updateprofilepic(imgfile) {
+    const uFrm = new FormData();
+    uFrm.append("profilePic",imgfile)
+    this.service.updateUserProfilePic(uFrm).subscribe(res=>{
+      console.log(res)
+      this.getData()
+    },error=>{
+     console.log(error)
+     this.common.stopLoader()
+     this.common.errorHandler(error.error)
+    })
+ }
 
   getData() {
     this.service.getProfile().subscribe((res: any) => {
       console.log("get data", res)
       let data = res.data
+      this.profile=data
       this.formData = this.fb.group({
         firstName: [data?.firstName, [Validators.required]],
         lastName: [data?.lastName, [Validators.required]],

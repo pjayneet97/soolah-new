@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl:"http://20.151.114.197:4000"
+  baseUrl:"http://20.151.114.197:4000",
+  countrycode:"+91"
 };
 
 /*

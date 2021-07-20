@@ -8,7 +8,7 @@ import { CommonService } from '../services/common.service';
   providedIn: 'root'
 })
 export class CustomerService {
-  role = "customer" // use this role to send it with object 
+  role = "customer" // use this role to send it with object
   constructor(public http: HttpClient,public router:Router,public common:CommonService) { }
 
 
@@ -61,6 +61,11 @@ export class CustomerService {
   }
 
 
+  updateUserProfilePic(data) {
+    return this.http.post(environment.baseUrl + '/api/v1/account/updateProfilePic', data)
+  }
+
+
   getProfile() {
     return this.http.get(environment.baseUrl + '/api/v1/account/profile')
   }
@@ -81,7 +86,7 @@ export class CustomerService {
   getUserData() {
     return JSON.parse(localStorage.getItem("userData"))
   }
-  
+
   removeLocalStorageData() {
     localStorage.removeItem("userData")
     localStorage.removeItem("encryptedToken")

@@ -6,8 +6,10 @@
     <div class="ion-margin-top ion-margin-bottom ion-text-center">
       <h6 class="ion-margin-top  ion-margin-bottom">Settings</h6>
       <ion-avatar>
-        <img src="../../../assets/images/avatar.png" width="64">
+        <img (click)="fileinp.click()" *ngIf="profile?.profilePic" [src]="profile?.profilePic" width="64">
+        <img (click)="fileinp.click()"  *ngIf="!profile?.profilePic"  src="../../../assets/images/avatar.png" width="64">
       </ion-avatar>
+      <input (change)="imageselected($event)" type="file" style="display: none !important;" #fileinp  accept=".jpg, .jpeg, .png">
     </div>
   <ion-row>
       <ion-col>
