@@ -41,9 +41,9 @@ export class ChangePasswordPage implements OnInit {
     console.log("form data", this.formData.value)
     this.service.changePassword(this.formData.value).subscribe(res => {
       console.log(res)
-      this.service.common.showToast("Password updated successful! Please login again with your new password!")
-      this.service.removeLocalStorageData()
+      this.service.common.showToast("Password updated successfully! Please login again with your new password!")
       this.common.stopLoader()
+      this.service.removeLocalStorageData()
       this.router.navigateByUrl("/get-started")
     }, error => {
       console.log(error)
