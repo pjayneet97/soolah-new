@@ -33,7 +33,7 @@ export class RegisterPage implements OnInit {
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
         ],
       ],
-      phone: ['', [Validators.pattern('^([0|+[0-9]{1,5})?([7-9][0-9]{9})$')]],
+      phone: ['', [Validators.pattern('^([0|+[0-9]{1,5})?([1-9][0-9]{9})$')]],
       password: [
         '',
         [
@@ -98,7 +98,8 @@ export class RegisterPage implements OnInit {
 
   register() {
     this.common.startLoader();
-    this.registerForm.value.phone = environment.countrycode + this.registerForm.value.phone;
+    this.registerForm.value.phone =
+      environment.countrycode + this.registerForm.value.phone;
     let data = this.registerForm.value;
     delete data.confirmPassword;
     delete data.countrycode;
@@ -133,13 +134,10 @@ export class RegisterPage implements OnInit {
   }
 
   isPhoneNumberValid() {
-    if(this.registerForm.get('phone').valid) {
-      return true
-    }
-    else {
-      return false
+    if (this.registerForm.get('phone').valid) {
+      return true;
+    } else {
+      return false;
     }
   }
-
-
 }

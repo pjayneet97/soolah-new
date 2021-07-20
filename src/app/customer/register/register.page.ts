@@ -13,8 +13,8 @@ import { environment } from 'src/environments/environment';
 })
 export class RegisterPage implements OnInit {
   registerForm: FormGroup;
-  role: string = "customer";
-  mode=null;
+  role: string = 'customer';
+  mode = null;
   constructor(
     public fb: FormBuilder,
     public router: Router,
@@ -22,17 +22,38 @@ export class RegisterPage implements OnInit {
     public common: CommonService,
     public route: ActivatedRoute
   ) {
-
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', []],
-      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
-      phone: ['', [Validators.pattern('^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$')]],
-      password: ['', [Validators.minLength(8), Validators.maxLength(40),
-      Validators.pattern('(?=.*[A-Za-z])(?=[^A-Z]*[A-Z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:\{\\\}\\\[\\\]\\\|\\\+\\\-\\\=\\\_\\\)\\\(\\\)\\\`\\\/\\\\\\]])[A-Za-z0-9\d$@].{7,}')]],
-      confirmPassword: ['', [Validators.minLength(8),
-      Validators.maxLength(40), Validators.pattern('(?=.*[A-Za-z])(?=[^A-Z]*[A-Z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:\{\\\}\\\[\\\]\\\|\\\+\\\-\\\=\\\_\\\)\\\(\\\)\\\`\\\/\\\\\\]])[A-Za-z0-9\d$@].{7,}')]],
-    /*   address: [''],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
+        ],
+      ],
+      phone: ['', [Validators.pattern('^([0|+[0-9]{1,5})?([1-9][0-9]{9})$')]],
+      password: [
+        '',
+        [
+          Validators.minLength(8),
+          Validators.maxLength(40),
+          Validators.pattern(
+            '(?=.*[A-Za-z])(?=[^A-Z]*[A-Z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:{\\}\\[\\]\\|\\+\\-\\=\\_\\)\\(\\)\\`\\/\\\\\\]])[A-Za-z0-9d$@].{7,}'
+          ),
+        ],
+      ],
+      confirmPassword: [
+        '',
+        [
+          Validators.minLength(8),
+          Validators.maxLength(40),
+          Validators.pattern(
+            '(?=.*[A-Za-z])(?=[^A-Z]*[A-Z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:{\\}\\[\\]\\|\\+\\-\\=\\_\\)\\(\\)\\`\\/\\\\\\]])[A-Za-z0-9d$@].{7,}'
+          ),
+        ],
+      ],
+      /*   address: [''],
       city: [''],*/
       countrycode: [environment.countrycode],
       // dob: ['',[Validators.required]],
@@ -42,25 +63,27 @@ export class RegisterPage implements OnInit {
       signUpWithGoogle: [false, [Validators.required]],
       signUpWithApple: [false, [Validators.required]],
       signUpWithFacebook: [false, [Validators.required]],
-      API_KEY : ["SOOLAH8F3D091909DC29SECRET",[Validators.required]]
+      API_KEY: ['SOOLAH8F3D091909DC29SECRET', [Validators.required]],
       // dob: ['', [Validators.required]],
     });
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  get registerValidation() {
+    return this.registerForm?.controls;
   }
 
-  get registerValidation() { return this.registerForm?.controls; }
-
   comparePassword() {
-    if (this.registerForm.value.confirmPassword === this.registerForm.value.password) {
+    if (
+      this.registerForm.value.confirmPassword ===
+      this.registerForm.value.password
+    ) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
-
 
   ionViewDidEnter() {
     let email = this.route.snapshot.queryParamMap.get('email');
@@ -72,26 +95,28 @@ export class RegisterPage implements OnInit {
     }
   }
 
-
-
   register() {
     this.common.startLoader();
-    this.registerForm.value.phone = environment.countrycode + this.registerForm.value.phone;
+    this.registerForm.value.phone =
+      environment.countrycode + this.registerForm.value.phone;
     let data = this.registerForm.value;
     delete data.confirmPassword;
     delete data.countrycode;
-    this.service.register(data).subscribe((res: any) => {
-      console.log(res);
-      this.service.setUserData(res.data);
-      this.common.showToast(res.message);
-      this.common.stopLoader();
-      this.registerForm.reset();
-      this.router.navigateByUrl("/" + this.role + "/verify-otp");
-    }, error => {
-      console.log(error);
-      this.common.stopLoader();
-      this.common.errorHandler(error.error);
-    });
+    this.service.register(data).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.service.setUserData(res.data);
+        this.common.showToast(res.message);
+        this.common.stopLoader();
+        this.registerForm.reset();
+        this.router.navigateByUrl('/' + this.role + '/verify-otp');
+      },
+      (error) => {
+        console.log(error);
+        this.common.stopLoader();
+        this.common.errorHandler(error.error);
+      }
+    );
   }
 
   changemode() {
@@ -108,12 +133,10 @@ export class RegisterPage implements OnInit {
   }
 
   isPhoneNumberValid() {
-    if(this.registerForm.get('phone').valid) {
-      return true
-    }
-    else {
-      return false
+    if (this.registerForm.get('phone').valid) {
+      return true;
+    } else {
+      return false;
     }
   }
-
 }
