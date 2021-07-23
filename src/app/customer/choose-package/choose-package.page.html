@@ -44,7 +44,7 @@
           <h1> $30.00 /Hour</h1>
       </ion-card-content>
 
-       
+
     </ion-card>
 
     <ion-card class="ion-text-center dark-color card-border-radius">
@@ -52,8 +52,9 @@
         <ion-grid class="ion-no-padding">
           <ion-row>
             <ion-col size="2">
-              <ion-button size="small" class="ion-no-padding">
-                <ion-icon slot="icon-only"  class="ion-no-padding" name="add"></ion-icon>
+              <ion-button (click)="addOnSupply()" size="small" class="ion-no-padding">
+                <ion-icon *ngIf="!service.addOn" slot="icon-only"  class="ion-no-padding" name="add"></ion-icon>
+                <ion-icon *ngIf="service.addOn" slot="icon-only"  class="ion-no-padding" name="remove"></ion-icon>
               </ion-button>
             </ion-col>
             <ion-col class="ion-text-left ion-padding-start" size="10">
@@ -65,10 +66,10 @@
           </ion-row>
         </ion-grid>
 
-      </ion-card-content>      
+      </ion-card-content>
     </ion-card>
     <div class="ion-padding">
-      <ion-button routerLink="/customer/select-cleaner" class="btn-txt" expand="block" color="secondary" shape="round">
+      <ion-button (click)="continue()"  class="btn-txt" expand="block" color="secondary" shape="round">
         Continue
       </ion-button>
     </div>
@@ -98,7 +99,7 @@
           <h1> $25.00 /Hour</h1>
       </ion-card-content>
 
-       
+
     </ion-card>
 
    <!--  <ion-card class="ion-text-center dark-color card-border-radius">
@@ -115,11 +116,11 @@
                 <br> <ion-text color="light"> One Time Fee : $ 15.00</ion-text>
               </ion-text>
 
-            </ion-col> 
+            </ion-col>
           </ion-row>
         </ion-grid>
 
-      </ion-card-content>      
+      </ion-card-content>
     </ion-card> -->
     <div class="ion-padding">
       <ion-button routerLink="/customer/select-cleaner" class="btn-txt" expand="block" color="secondary" shape="round">

@@ -6,6 +6,12 @@
     font-size: 40px !important;
 }
 
+.customer-name {
+    padding-top: 5px;
+    font-size: 14px !important;
+}
+
+
 .display-flex {
     display: flex !important;
 }
@@ -17,3 +23,8 @@
 small {
     margin-top: 5px !important;
 }
+
+
+agm-map {
+    height: 150px;
+  }

@@ -9,6 +9,8 @@ import { CommonService } from '../services/common.service';
 })
 export class CustomerService {
   role = "customer" // use this role to send it with object
+  addOn:boolean=false
+  packageType:any="luxurious"
   constructor(public http: HttpClient,public router:Router,public common:CommonService) { }
 
 
@@ -97,5 +99,29 @@ export class CustomerService {
     this.common.showToast("Logout Successful!")
     this.router.navigateByUrl("/get-started")
   }
+
+  getAvailableCleaners(data) {
+    return this.http.get(environment.baseUrl + '/api/v1/account/getAvailableCleaners?'+ this.getQueryString(data))
+  }
+
+
+  createBooking(data) {
+    return this.http.post(environment.baseUrl + '/api/v1/account/createNewBooking', data)
+  }
+
+
+  getQueryString(obj){
+    var str = [];
+   for(var p in obj){
+       if (obj.hasOwnProperty(p)) {
+           str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+       }
+   }
+   return str.join("&");
+  }
+
+
+
+
 
 }

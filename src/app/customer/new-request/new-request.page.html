@@ -10,29 +10,26 @@
 
 
 <ion-content>
-  <h5 class="ion-padding-start"> Select Zones</h5>
-
-  <div >
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6">
-            <input type="radio" id="residential"  value="residential">
-            <label for="residential">Residential</label>
-        </ion-col>
-        <ion-col size="6">
-          <input type="radio" id="commercial"  value="commercial">
-            <label for="commercial">Commercial</label>
-        </ion-col>
-      </ion-row>
-
-    </ion-grid>
+  <h5 class="ion-padding-start"> <b> Select Zones </b></h5>
+  <div class="flex">
+    <form>
+        <input type="radio" id="residential" [(ngModel)]="cleaningType" [ngModelOptions]="{standalone: true}"
+        value="residential">
+        <label for="residential">Residential</label>
+        <input type="radio" id="commercial" [(ngModel)]="cleaningType" [ngModelOptions]="{standalone: true}"
+        value="commercial">
+        <label for="commercial">Commercial</label>
+    </form>
   </div>
+   <div class="address">
+    <input class="address-input" [(ngModel)]="cleaningaddress.address" type="text" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"  placeholder="Select address">
+   </div>
 
   <div class="ion-padding ">
 
 
 
-    <ion-button routerLink="/customer/choose-package" class="btn-txt" expand="block" color="secondary"  shape="round">
+    <ion-button (click)="navigate()" class="btn-txt" expand="block" color="secondary" shape="round">
       Next
     </ion-button>
 

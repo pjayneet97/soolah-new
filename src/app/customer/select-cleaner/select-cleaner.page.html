@@ -18,10 +18,15 @@
             <img height="50" src="../../../assets/images/Rectangle 159.png" alt="">
           </ion-col>
           <ion-col class="ion-text-left ion-padding-start" size="6">
-            <ion-text class="small-text" color="dark">Choosen Luxurious Package
+            <ion-text class="small-text" color="dark">Choosen {{service.packageType}} Package
               <br>
-              <ion-text color="primary"> No Add ons </ion-text>
-              <ion-icon color="primary" name="add-circle"></ion-icon>
+              <ng-container *ngIf="service.packageType=='luxurious'">
+                <ion-text color="primary" *ngIf="!service.addOn"> No Add ons </ion-text>
+                <ion-icon color="primary" name="add-circle"   *ngIf="!service.addOn" (click)="addOnSupply()"></ion-icon>
+                <ion-text color="primary" *ngIf="service.addOn">Add on selected </ion-text>
+                <ion-icon color="primary"  *ngIf="service.addOn" name="remove-circle" (click)="addOnSupply()"></ion-icon>
+              </ng-container>
+
             </ion-text>
 
           </ion-col>
@@ -45,7 +50,7 @@
 
   <div style="height: 200px;overflow: auto;">
 
-    <ion-card class="ion-text-center dark-color card-border-radius">
+    <ion-card *ngFor="let cleaner of cleaners" class="ion-text-center dark-color card-border-radius">
       <ion-card-content class="ion-no-padding">
         <ion-grid class="ion-no-padding">
           <ion-row class="ion-padding-top">
@@ -53,73 +58,7 @@
               <img class="img-round" height="50" width="50" src="../../../assets/images/Rectangle 159.png" alt="">
             </ion-col>
             <ion-col class="ion-text-left" size="5">
-              <ion-text class="small-text" color="light">Sara Cleaner
-              </ion-text>
-
-            </ion-col>
-            <ion-col class="ion-text-right ion-padding-end" size="4">
-              <ion-text class="price-bottom" color="success">$ 230</ion-text>
-
-
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-
-      </ion-card-content>
-    </ion-card>
-    <ion-card class="ion-text-center dark-color card-border-radius">
-      <ion-card-content class="ion-no-padding">
-        <ion-grid class="ion-no-padding">
-          <ion-row class="ion-padding-top">
-            <ion-col size="3">
-              <img class="img-round" height="50" width="50" src="../../../assets/images/Rectangle 159.png" alt="">
-            </ion-col>
-            <ion-col class="ion-text-left" size="5">
-              <ion-text class="small-text" color="light">Sara Cleaner
-              </ion-text>
-
-            </ion-col>
-            <ion-col class="ion-text-right ion-padding-end" size="4">
-              <ion-text class="price-bottom" color="success">$ 230</ion-text>
-
-
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-
-      </ion-card-content>
-    </ion-card>
-    <ion-card class="ion-text-center dark-color card-border-radius">
-      <ion-card-content class="ion-no-padding">
-        <ion-grid class="ion-no-padding">
-          <ion-row class="ion-padding-top">
-            <ion-col size="3">
-              <img class="img-round" height="50" width="50" src="../../../assets/images/Rectangle 159.png" alt="">
-            </ion-col>
-            <ion-col class="ion-text-left" size="5">
-              <ion-text class="small-text" color="light">Sara Cleaner
-              </ion-text>
-
-            </ion-col>
-            <ion-col class="ion-text-right ion-padding-end" size="4">
-              <ion-text class="price-bottom" color="success">$ 230</ion-text>
-
-
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-
-      </ion-card-content>
-    </ion-card>
-    <ion-card class="ion-text-center dark-color card-border-radius">
-      <ion-card-content class="ion-no-padding">
-        <ion-grid class="ion-no-padding">
-          <ion-row class="ion-padding-top">
-            <ion-col size="3">
-              <img class="img-round" height="50" width="50" src="../../../assets/images/Rectangle 159.png" alt="">
-            </ion-col>
-            <ion-col class="ion-text-left" size="5">
-              <ion-text class="small-text" color="light">Sara Cleaner
+              <ion-text class="small-text" color="light">{{cleaner.firstName}} {{cleaner.lastName}}
               </ion-text>
 
             </ion-col>

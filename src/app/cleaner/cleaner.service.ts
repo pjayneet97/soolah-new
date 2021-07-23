@@ -104,6 +104,18 @@ export class CleanerService {
     return this.http.get(environment.baseUrl + '/api/v1/account/getOrdersDetails?'+this.getQueryString(data))
   }
 
+
+  acceptOrder(data) {
+    return this.http.put(environment.baseUrl + '/api/v1/account/acceptOrder',data)
+  }
+
+
+
+  rejectOrder(data) {
+    return this.http.put(environment.baseUrl + '/api/v1/account/rejectOrder',data)
+  }
+
+
   getQueryString(obj){
     var str = [];
    for(var p in obj){
@@ -113,5 +125,7 @@ export class CleanerService {
    }
    return str.join("&");
   }
+
+
 
 }

@@ -1,6 +1,6 @@
 <ion-header class="bg-medium">
   <ion-toolbar color="medium">
-<!--     <ion-buttons slot="start">
+    <!--     <ion-buttons slot="start">
       <ion-back-button icon="arrow-back-outline" text="" defaultHref="/" color="primary"></ion-back-button>
     </ion-buttons> -->
     <ion-title size="small" color="primary">Orders</ion-title>
@@ -21,10 +21,10 @@
   </ion-segment>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
 
-  <ng-container *ngIf="segmentvalue=='upcoming'">
-    <ng-container *ngIf="false">
+  <ng-container *ngIf="segmentvalue=='upcoming' && orders">
+    <ng-container *ngIf="orders.length==0">
       <div class="ion-padding ion-text-center">
         <img src="../../../assets/images/Soolah-new-logo-color.svg" alt="Soolah" width="96" />
       </div>
@@ -37,12 +37,12 @@
             card-border-radius
           ">
           <ion-card-header>
-            <img class="img-round" width="50" height="50" src="../../../assets/images/avatar.png" alt="" />
+            <img class="img-round" width="50" height="50" [src]="profile?.profilePic" alt="" />
             <ion-card-title>
               <div>
                 <ion-icon color="light" name="star"></ion-icon> 0.0
               </div>
-              <small> Sara Doe </small>
+              <small>  {{profile?.firstName}} {{profile?.lastName}} </small>
             </ion-card-title>
           </ion-card-header>
           <ion-card-content>
@@ -54,42 +54,50 @@
       </div>
     </ng-container>
 
-    <ng-container>
-      <ion-card color="medium" class="ion-text-center dark-color card-border-radius">
+
+    <ng-container *ngIf="!orders.length==0 ">
+      <ion-card *ngFor="let item of orders" color="medium" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding" fixed>
             <ion-row class="ion-no-padding">
               <ion-col class="ion-no-padding" size="8">
                 <div class="display-flex ion-padding-top ion-padding-start">
-                  <img src="../../../assets/images/Soolah-new-logo-color.svg" class="img-round" alt="Soolah" width="30"
-                    height="30" />
-                  <b class="ion-margin-start text-small"> Robin Customer </b>
+                  <img [src]="item.customerId.profilePic" class="img-round" alt="Soolah" width="35" height="35" />
+                  <b class="customer-name ion-margin-start"> {{item.customerId.firstName}} {{item.customerId.lastName}}
+                  </b>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small>Residential</small>
+                  <small style="text-transform: uppercase;">{{item.bookingId.cleaningType}} </small>
                   <ion-button class="btn" size="small" color="secondary" shape="round">Upcoming
                   </ion-button>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small> Moday 24th August 2019 </small>
+                  <small> {{item.bookingId.cleaningRequestedFromDate | date}} to
+                    {{item.bookingId.cleaningRequestedToDate | date}}</small>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small> 11:00 am to 11:00 pm </small>
+                  <small> {{item.bookingId.cleaningStartTime | date:'shortTime'}} to
+                    {{item.bookingId.cleaningEndTime | date:'shortTime'}} </small>
                 </div>
               </ion-col>
               <ion-col size="4">
-                <img src="../../../assets/images/map.png" height="150px" alt="" />
+                <agm-map  [usePanning]="true"  [zoom]="13" [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                  <agm-marker  [iconUrl]="obj"  [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                    <!--     <agm-info-window>{{item.address}}</agm-info-window> -->
+                  </agm-marker>
+
+                </agm-map>
+
               </ion-col>
             </ion-row>
           </ion-grid>
         </ion-card-content>
       </ion-card>
-
     </ng-container>
   </ng-container>
 
-  <ng-container *ngIf="segmentvalue=='active'">
-    <ng-container *ngIf="false">
+  <ng-container *ngIf="segmentvalue=='active' && orders">
+    <ng-container *ngIf="orders.length==0">
       <div class="ion-padding ion-text-center">
         <img src="../../../assets/images/Soolah-new-logo-color.svg" alt="Soolah" width="96" />
       </div>
@@ -102,12 +110,12 @@
             card-border-radius
           ">
           <ion-card-header>
-            <img class="img-round" width="50" height="50" src="../../../assets/images/avatar.png" alt="" />
+            <img class="img-round" width="50" height="50" [src]="profile?.profilePic" alt="" />
             <ion-card-title>
               <div>
                 <ion-icon color="light" name="star"></ion-icon> 0.0
               </div>
-              <small> Sara Doe </small>
+              <small>  {{profile?.firstName}} {{profile?.lastName}} </small>
             </ion-card-title>
           </ion-card-header>
           <ion-card-content>
@@ -119,31 +127,39 @@
       </div>
     </ng-container>
 
-    <ng-container>
-      <ion-card color="medium" class="ion-text-center dark-color card-border-radius">
+    <ng-container *ngIf="!orders.length==0">
+      <ion-card *ngFor="let item of orders" color="medium" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding" fixed>
             <ion-row class="ion-no-padding">
               <ion-col class="ion-no-padding" size="8">
                 <div class="display-flex ion-padding-top ion-padding-start">
-                  <img src="../../../assets/images/Soolah-new-logo-color.svg" class="img-round" alt="Soolah" width="30"
-                    height="30" />
-                  <b class="ion-margin-start text-small"> Robin Customer </b>
+                  <img [src]="item.customerId.profilePic" class="img-round" alt="Soolah" width="35" height="35" />
+                  <b class="customer-name ion-margin-start"> {{item.customerId.firstName}} {{item.customerId.lastName}}
+                  </b>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small>Residential</small>
-                  <ion-button class="btn" size="small" color="secondary" shape="round">Active
+                  <small style="text-transform: uppercase;">{{item.bookingId.cleaningType}} </small>
+                  <ion-button class="btn" size="small" color="secondary" shape="round">Upcoming
                   </ion-button>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small> Moday 24th August 2019 </small>
+                  <small> {{item.bookingId.cleaningRequestedFromDate | date}} to
+                    {{item.bookingId.cleaningRequestedToDate | date}}</small>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small> 11:00 am to 11:00 pm </small>
+                  <small> {{item.bookingId.cleaningStartTime | date:'shortTime'}} to
+                    {{item.bookingId.cleaningEndTime | date:'shortTime'}} </small>
                 </div>
               </ion-col>
               <ion-col size="4">
-                <img src="../../../assets/images/map.png" height="150px" alt="" />
+                <agm-map [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                  <agm-marker  [iconUrl]="obj"  [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitud">
+                    <!--     <agm-info-window>{{item.address}}</agm-info-window> -->
+                  </agm-marker>
+
+                </agm-map>
+
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -152,8 +168,8 @@
     </ng-container>
   </ng-container>
 
-  <ng-container *ngIf="segmentvalue=='completed'">
-    <ng-container *ngIf="false">
+  <ng-container *ngIf="segmentvalue=='completed' && orders">
+    <ng-container *ngIf="orders.length==0">
       <div class="ion-padding ion-text-center">
         <img src="../../../assets/images/Soolah-new-logo-color.svg" alt="Soolah" width="96" />
       </div>
@@ -166,12 +182,12 @@
             card-border-radius
           ">
           <ion-card-header>
-            <img class="img-round" width="50" height="50" src="../../../assets/images/avatar.png" alt="" />
+            <img class="img-round" width="50" height="50" [src]="profile?.profilePic" alt="" />
             <ion-card-title>
               <div>
                 <ion-icon color="light" name="star"></ion-icon> 0.0
               </div>
-              <small> Sara Doe </small>
+              <small>  {{profile?.firstName}} {{profile?.lastName}} </small>
             </ion-card-title>
           </ion-card-header>
           <ion-card-content>
@@ -182,28 +198,29 @@
         </ion-card>
       </div>
     </ng-container>
-
-    <ng-container>
-      <ion-card color="medium" class="ion-text-center dark-color card-border-radius">
+    <ng-container *ngIf="!orders.length==0">
+      <ion-card *ngFor="let item of orders" color="medium" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding" fixed>
             <ion-row class="ion-no-padding">
               <ion-col class="ion-no-padding" size="8">
                 <div class="display-flex ion-padding-top ion-padding-start">
-                  <img src="../../../assets/images/Soolah-new-logo-color.svg" class="img-round" alt="Soolah" width="30"
-                    height="30" />
-                  <b class="ion-margin-start text-small"> Robin Customer </b>
+                  <img [src]="item.customerId.profilePic" class="img-round" alt="Soolah" width="35" height="35" />
+                  <b class="customer-name ion-margin-start"> {{item.customerId.firstName}} {{item.customerId.lastName}}
+                  </b>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small>Residential</small>
-                  <ion-button class="btn" size="small" color="secondary" shape="round">Completed
+                  <small style="text-transform: uppercase;">{{item.bookingId.cleaningType}} </small>
+                  <ion-button class="btn" size="small" color="secondary" shape="round">Upcoming
                   </ion-button>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small> Moday 24th August 2019 </small>
+                  <small> {{item.bookingId.cleaningRequestedFromDate | date}} to
+                    {{item.bookingId.cleaningRequestedToDate | date}}</small>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small> 11:00 am to 11:00 pm </small>
+                  <small> {{item.bookingId.cleaningStartTime | date:'shortTime'}} to
+                    {{item.bookingId.cleaningEndTime | date:'shortTime'}} </small>
                 </div>
               </ion-col>
               <ion-col size="4">
@@ -213,12 +230,11 @@
           </ion-grid>
         </ion-card-content>
       </ion-card>
-
     </ng-container>
   </ng-container>
 
-  <ng-container *ngIf="segmentvalue=='cancelled'">
-    <ng-container *ngIf="false">
+  <ng-container *ngIf="segmentvalue=='cancelled' && orders">
+    <ng-container *ngIf="orders.length==0">
       <div class="ion-padding ion-text-center">
         <img src="../../../assets/images/Soolah-new-logo-color.svg" alt="Soolah" width="96" />
       </div>
@@ -231,12 +247,12 @@
             card-border-radius
           ">
           <ion-card-header>
-            <img class="img-round" width="50" height="50" src="../../../assets/images/avatar.png" alt="" />
+            <img class="img-round" width="50" height="50" [src]="profile?.profilePic" alt="" />
             <ion-card-title>
               <div>
                 <ion-icon color="light" name="star"></ion-icon> 0.0
               </div>
-              <small> Sara Doe </small>
+              <small>  {{profile?.firstName}} {{profile?.lastName}} </small>
             </ion-card-title>
           </ion-card-header>
           <ion-card-content>
@@ -248,27 +264,29 @@
       </div>
     </ng-container>
 
-    <ng-container>
-      <ion-card color="medium" class="ion-text-center dark-color card-border-radius">
+    <ng-container *ngIf="!orders.length==0" >
+      <ion-card *ngFor="let item of orders" color="medium" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding" fixed>
             <ion-row class="ion-no-padding">
               <ion-col class="ion-no-padding" size="8">
                 <div class="display-flex ion-padding-top ion-padding-start">
-                  <img src="../../../assets/images/Soolah-new-logo-color.svg" class="img-round" alt="Soolah" width="30"
-                    height="30" />
-                  <b class="ion-margin-start text-small"> Robin Customer </b>
+                  <img [src]="item.customerId.profilePic" class="img-round" alt="Soolah" width="35" height="35" />
+                  <b class="customer-name ion-margin-start"> {{item.customerId.firstName}} {{item.customerId.lastName}}
+                  </b>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small>Residential</small>
-                  <ion-button class="btn" size="small" color="secondary" shape="round">Cancelled
+                  <small style="text-transform: uppercase;">{{item.bookingId.cleaningType}} </small>
+                  <ion-button class="btn" size="small" color="secondary" shape="round">Upcoming
                   </ion-button>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small> Moday 24th August 2019 </small>
+                  <small> {{item.bookingId.cleaningRequestedFromDate | date}} to
+                    {{item.bookingId.cleaningRequestedToDate | date}}</small>
                 </div>
                 <div class="display-flex ion-padding-start">
-                  <small> 11:00 am to 11:00 pm </small>
+                  <small> {{item.bookingId.cleaningStartTime | date:'shortTime'}} to
+                    {{item.bookingId.cleaningEndTime | date:'shortTime'}} </small>
                 </div>
               </ion-col>
               <ion-col size="4">

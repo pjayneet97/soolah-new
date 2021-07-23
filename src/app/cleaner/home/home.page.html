@@ -18,7 +18,7 @@
   <div class="ion-padding ">
     <ion-card color="medium" class="ion-text-center dark-color ion-padding-bottom card-border-radius">
       <ion-card-header>
-        <img class="img-round" width="50" height="50" src="../../../assets/images/avatar.png" alt="">
+        <img class="img-round" width="50" height="50" [src]="profile?.profilePic" alt="">
 
         <ion-card-title>
          <div>   <ion-icon color="light" name="star"></ion-icon> 0.0  </div>
@@ -36,7 +36,7 @@
 
   <div class="ion-padding ">
 
-    <ion-button *ngIf="isProfileComplete()" class="btn-txt" expand="block" color="secondary"   shape="round">
+    <ion-button *ngIf="isProfileComplete()"   routerLink="/cleaner/set-availability" class="btn-txt" expand="block" color="secondary"   shape="round">
       Set Your Availability
     </ion-button>
     <ion-button  *ngIf="!isProfileComplete()" class="btn-txt" expand="block" color="secondary" routerLink="/cleaner/profile"   shape="round">

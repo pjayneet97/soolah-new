@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-choose-package',
@@ -7,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChoosePackagePage implements OnInit {
 mode='luxurious'
+packageType=this.mode
 
-  constructor() { }
+  constructor(public router: Router,public service:CustomerService) { }
 
   ngOnInit() {
   }
@@ -16,9 +19,31 @@ mode='luxurious'
 
   segmentChanged(ev: any) {
     this.mode=ev.detail.value;
-
-    console.log('Segment changed', this.mode);
+    this.packageType=this.mode;
+    console.log('Segment changed', this.packageType);
   }
 
+  addOnSupply() {
+    this.service.addOn=!this.service.addOn
+    console.log(this.service.addOn)
+  }
+
+  continue() {
+    this.service.packageType=this.packageType
+    console.log(this.service.packageType)
+    this.router.navigateByUrl('/customer/select-cleaner')
+  }
+
+
+/*   navigate() {
+    this.router.navigate(['/customer/choose-package'], {
+      queryParams: {
+        cleaningType: this.cleaningType,
+        cleaningLocationAddress: this.cleaningaddress.address,
+        cleaningLocationLattitude: this.cleaningaddress.lat,
+        cleaningLocationLongitude:this.cleaningaddress.long
+      },
+    });
+  } */
 
 }

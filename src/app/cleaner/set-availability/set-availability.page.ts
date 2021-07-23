@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./set-availability.page.scss'],
 })
 export class SetAvailabilityPage implements OnInit {
-
+  selectedDate:any
   constructor() { }
 
   ngOnInit() {

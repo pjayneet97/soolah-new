@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { OrdersPageRoutingModule } from './orders-routing.module';
 
 import { OrdersPage } from './orders.page';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    OrdersPageRoutingModule
+    OrdersPageRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDZoysoZROVRhMX4KMWTDQkSBwTgFdksnw'
+    })
   ],
   declarations: [OrdersPage]
 })
