@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CleanerPageRoutingModule } from './cleaner-routing.module';
 
 import { CleanerPage } from './cleaner.page';
+import { CalendarModule } from 'ion2-calendar';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CleanerPageRoutingModule
+    CleanerPageRoutingModule,
+    CalendarModule
   ],
   declarations: [CleanerPage]
 })

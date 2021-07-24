@@ -7,14 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { SetAvailabilityPageRoutingModule } from './set-availability-routing.module';
 
 import { SetAvailabilityPage } from './set-availability.page';
-import { DpDatePickerModule } from 'ng2-date-picker';
+import { CalendarModule } from 'ion2-calendar';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DpDatePickerModule,
+    CalendarModule,
     SetAvailabilityPageRoutingModule
   ],
   declarations: [SetAvailabilityPage]

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
 
 @Component({
@@ -11,9 +11,12 @@ export class ChoosePackagePage implements OnInit {
 mode='luxurious'
 packageType=this.mode
 
-  constructor(public router: Router,public service:CustomerService) { }
+  constructor(public router: Router,public service:CustomerService,public route:ActivatedRoute) { }
 
   ngOnInit() {
+    let obj = this.route.snapshot.queryParams
+    console.log(obj)
+    let newobj = {...obj,...{name:"jayneet"}}
   }
 
 

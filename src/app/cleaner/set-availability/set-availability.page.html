@@ -9,5 +9,10 @@
 </ion-header>
 
 <ion-content>
-  <dp-day-time-calendar [(ngModel)]="selectedDate" [config]="config"></dp-day-time-calendar>  
+  <ion-calendar [(ngModel)]="dates"
+  (change)="onDateChange($event)"
+  [type]="type"
+  [options]="optionsMulti"
+  [format]="'YYYY-MM-DD'">
+</ion-calendar>
 </ion-content>
