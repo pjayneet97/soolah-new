@@ -18,7 +18,7 @@
   <div class="ion-padding ">
     <ion-card color="medium" class="ion-text-center dark-color ion-padding-bottom card-border-radius">
       <ion-card-header>
-        <img class="img-round" width="50" height="50" src="../../../assets/images/avatar.png" alt="">
+        <img class="img-round" width="50" height="50" [src]="profile?.profilePic" alt="">
         <ion-card-title>Welcome {{profile?.firstName}} {{profile?.lastName}}</ion-card-title>
       </ion-card-header>
       <ion-card-content >

@@ -8,45 +8,37 @@ import { CustomerService } from '../customer.service';
   styleUrls: ['./choose-package.page.scss'],
 })
 export class ChoosePackagePage implements OnInit {
-mode='luxurious'
-packageType=this.mode
+  mode = 'luxurious';
+  optionalAddOn: boolean = false;
+  newobj: any;
+  oldobj:any={}
 
-  constructor(public router: Router,public service:CustomerService,public route:ActivatedRoute) { }
+  constructor(
+    public router: Router,
+    public service: CustomerService,
+    public route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    let obj = this.route.snapshot.queryParams
-    console.log(obj)
-    let newobj = {...obj,...{name:"jayneet"}}
+    this.oldobj = this.route.snapshot.queryParams;
+    console.log( this.oldobj);
+
   }
 
-
   segmentChanged(ev: any) {
-    this.mode=ev.detail.value;
-    this.packageType=this.mode;
-    console.log('Segment changed', this.packageType);
+    this.mode = ev.detail.value;
+    console.log('Segment changed', this.mode);
   }
 
   addOnSupply() {
-    this.service.addOn=!this.service.addOn
-    console.log(this.service.addOn)
+    this.optionalAddOn = !this.optionalAddOn;
+    console.log(this.optionalAddOn);
   }
 
-  continue() {
-    this.service.packageType=this.packageType
-    console.log(this.service.packageType)
-    this.router.navigateByUrl('/customer/select-cleaner')
-  }
-
-
-/*   navigate() {
-    this.router.navigate(['/customer/choose-package'], {
-      queryParams: {
-        cleaningType: this.cleaningType,
-        cleaningLocationAddress: this.cleaningaddress.address,
-        cleaningLocationLattitude: this.cleaningaddress.lat,
-        cleaningLocationLongitude:this.cleaningaddress.long
-      },
+  navigate() {
+    this.newobj = {...this.oldobj,...{ optionalAddOn: this.optionalAddOn,packageType: this.mode  }};
+    this.router.navigate(['/customer/select-cleaner'], {
+      queryParams: this.newobj,
     });
-  } */
-
+  }
 }

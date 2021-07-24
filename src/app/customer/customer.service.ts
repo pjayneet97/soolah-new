@@ -9,8 +9,6 @@ import { CommonService } from '../services/common.service';
 })
 export class CustomerService {
   role = "customer" // use this role to send it with object
-  addOn:boolean=false
-  packageType:any="luxurious"
   constructor(public http: HttpClient,public router:Router,public common:CommonService) { }
 
 

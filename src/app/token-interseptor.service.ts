@@ -9,7 +9,6 @@ export class TokenInterceptorService implements HttpInterceptor {
   constructor() { }
 
   intercept(req,next){
-    console.log("encryptedToken",localStorage.getItem("encryptedToken"))
     if(localStorage.getItem("encryptedToken")){
       let tokenizedReq = req.clone({
         setHeaders:{

@@ -44,7 +44,7 @@ const routes: Routes = [
     canActivate: [CustomerGuardService],
     loadChildren: () => import('./order-detail/order-detail.module').then(m => m.OrderDetailPageModule)
   },
- 
+
   // routes without guard will come below it and route with guards will come above it
   {
     path: 'auth',
@@ -63,7 +63,7 @@ const routes: Routes = [
     loadChildren: () => import('./verify-otp/verify-otp.module').then( m => m.VerifyOtpPageModule)
   },
 
- 
+
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)

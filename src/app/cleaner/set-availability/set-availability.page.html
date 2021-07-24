@@ -9,10 +9,34 @@
 </ion-header>
 
 <ion-content>
-  <ion-calendar [(ngModel)]="dates"
-  (change)="onDateChange($event)"
-  [type]="type"
-  [options]="optionsMulti"
-  [format]="'YYYY-MM-DD'">
-</ion-calendar>
+  <ion-calendar [(ngModel)]="dates" (change)="onDateChange($event)" [type]="type" [options]="optionsMulti"
+    [format]="'YYYY-MM-DD'">
+  </ion-calendar>
+
+  
+    <h6 class="ion-text-center">Select Hours</h6>
+    <h6 style="padding: 1px;">
+      <ion-icon color="success" style="position: absolute;right: 20px;" name="caret-up-outline"></ion-icon>
+    </h6>
+    <div style="height: 82px;overflow: auto;">
+
+      <ion-card (click)="selectSlots(slot)" *ngFor="let slot of availableSlots" class="ion-text-center dark-color card-border-radius">
+        <ion-card-content class="ion-no-padding">
+          <ion-grid [ngClass]="{'bg-success':slot.isselected}">
+            <ion-text class="small-text">{{slot.title}}
+            </ion-text>
+          </ion-grid>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <h6 style="padding: 1px;">
+      <ion-icon color="success" style="position: absolute;  right: 20px;" name="caret-down-outline"></ion-icon>
+    </h6>
+  <div class="ion-padding">
+    <ion-button (click)="save()" class="btn-txt" expand="block" color="secondary" shape="round">
+      Next
+    </ion-button>
+  </div>
+
 </ion-content>

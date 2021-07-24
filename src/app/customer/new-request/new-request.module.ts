@@ -8,6 +8,7 @@ import { NewRequestPageRoutingModule } from './new-request-routing.module';
 
 import { NewRequestPage } from './new-request.page';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { CalendarModule } from 'ion2-calendar';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     FormsModule,
     IonicModule,
     NewRequestPageRoutingModule,
-    GooglePlaceModule
+    GooglePlaceModule,
+    CalendarModule
   ],
   declarations: [NewRequestPage]
 })

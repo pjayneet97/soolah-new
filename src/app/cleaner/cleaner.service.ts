@@ -126,6 +126,10 @@ export class CleanerService {
    return str.join("&");
   }
 
+  setAvailability(data) {
+    return this.http.post(environment.baseUrl + '/api/v1/account/setMyAvailablility',data)
+  }
+
 
 
 }

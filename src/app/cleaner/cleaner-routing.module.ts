@@ -13,26 +13,16 @@ const routes: Routes = [
     canActivate:[CleanerGuardService],
     loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
-  {
-    path: 'set-availability',
-    canActivate:[CleanerGuardService],
-    loadChildren: () => import('./set-availability/set-availability.module').then( m => m.SetAvailabilityPageModule)
-  },
-  {
-    path: 'set-availability-success',
-    canActivate:[CleanerGuardService],
-    loadChildren: () => import('./set-availability-success/set-availability-success.module').then( m => m.SetAvailabilitySuccessPageModule)
-  },
 
   {
     path: 'notifications',
     canActivate:[CleanerGuardService],
     loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
   },
- 
 
-  
-  
+
+
+
   // routes without guard will come below it and route with guards will come above it
   {
     path: 'auth',
@@ -54,7 +44,7 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   }
- 
+
 
 ];
 

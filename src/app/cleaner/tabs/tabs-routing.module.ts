@@ -21,6 +21,14 @@ const routes: Routes = [
         loadChildren: () => import('../orders/orders.module').then( m => m.OrdersPageModule)
       },
       {
+        path: 'set-availability',
+        loadChildren: () => import('../set-availability/set-availability.module').then( m => m.SetAvailabilityPageModule)
+      },
+      {
+        path: 'set-availability-success',
+        loadChildren: () => import('../set-availability-success/set-availability-success.module').then( m => m.SetAvailabilitySuccessPageModule)
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'

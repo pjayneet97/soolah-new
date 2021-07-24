@@ -39,9 +39,9 @@
             <ion-icon name="star" color="primary"></ion-icon>
           </span> Cleaners</h3>
 
-          <br> <br>
+        <br> <br>
 
-          <h1> $30.00 /Hour</h1>
+        <h1> $30.00 /Hr</h1>
       </ion-card-content>
 
 
@@ -53,13 +53,14 @@
           <ion-row>
             <ion-col size="2">
               <ion-button (click)="addOnSupply()" size="small" class="ion-no-padding">
-                <ion-icon *ngIf="!service.addOn" slot="icon-only"  class="ion-no-padding" name="add"></ion-icon>
-                <ion-icon *ngIf="service.addOn" slot="icon-only"  class="ion-no-padding" name="remove"></ion-icon>
+                <ion-icon *ngIf="!optionalAddOn" slot="icon-only" class="ion-no-padding" name="add"></ion-icon>
+                <ion-icon *ngIf="optionalAddOn" slot="icon-only" class="ion-no-padding" name="remove"></ion-icon>
               </ion-button>
             </ion-col>
             <ion-col class="ion-text-left ion-padding-start" size="10">
               <ion-text color="primary">Add Cleaning Supplies
-                <br> <ion-text color="light"> One Time Fee : $ 15.00</ion-text>
+                <br>
+                <ion-text color="light"> One Time Fee : $ 15.00</ion-text>
               </ion-text>
 
             </ion-col>
@@ -69,7 +70,7 @@
       </ion-card-content>
     </ion-card>
     <div class="ion-padding">
-      <ion-button (click)="continue()"  class="btn-txt" expand="block" color="secondary" shape="round">
+      <ion-button (click)="navigate()" class="btn-txt" expand="block" color="secondary" shape="round">
         Continue
       </ion-button>
     </div>
@@ -94,26 +95,27 @@
             <ion-icon name="star" color="primary"></ion-icon>
           </span> or lower ranking cleaners</h3>
 
-          <br> <br>
+        <br> <br>
 
-          <h1> $25.00 /Hour</h1>
+        <h1> $25.00 /Hr</h1>
       </ion-card-content>
 
 
     </ion-card>
-
-   <!--  <ion-card class="ion-text-center dark-color card-border-radius">
+    <ion-card class="ion-text-center dark-color card-border-radius">
       <ion-card-content>
         <ion-grid class="ion-no-padding">
           <ion-row>
             <ion-col size="2">
-              <ion-button size="small" class="ion-no-padding">
-                <ion-icon slot="icon-only"  class="ion-no-padding" name="add"></ion-icon>
+              <ion-button (click)="addOnSupply()" size="small" class="ion-no-padding">
+                <ion-icon *ngIf="!optionalAddOn" slot="icon-only" class="ion-no-padding" name="add"></ion-icon>
+                <ion-icon *ngIf="optionalAddOn" slot="icon-only" class="ion-no-padding" name="remove"></ion-icon>
               </ion-button>
             </ion-col>
             <ion-col class="ion-text-left ion-padding-start" size="10">
               <ion-text color="primary">Add Cleaning Supplies
-                <br> <ion-text color="light"> One Time Fee : $ 15.00</ion-text>
+                <br>
+                <ion-text color="light"> One Time Fee : $ 15.00</ion-text>
               </ion-text>
 
             </ion-col>
@@ -121,9 +123,9 @@
         </ion-grid>
 
       </ion-card-content>
-    </ion-card> -->
+    </ion-card>
     <div class="ion-padding">
-      <ion-button routerLink="/customer/select-cleaner" class="btn-txt" expand="block" color="secondary" shape="round">
+      <ion-button (click)="navigate()" class="btn-txt" expand="block" color="secondary" shape="round">
         Continue
       </ion-button>
     </div>
