@@ -126,8 +126,7 @@
         </ion-card>
       </div>
     </ng-container>
-
-    <ng-container *ngIf="!orders.length==0">
+    <ng-container *ngIf="!orders.length==0 ">
       <ion-card *ngFor="let item of orders" color="medium" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding" fixed>
@@ -153,8 +152,8 @@
                 </div>
               </ion-col>
               <ion-col size="4">
-                <agm-map [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
-                  <agm-marker  [iconUrl]="obj"  [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitud">
+                <agm-map  [usePanning]="true"  [zoom]="13" [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                  <agm-marker  [iconUrl]="obj"  [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
                     <!--     <agm-info-window>{{item.address}}</agm-info-window> -->
                   </agm-marker>
 
@@ -198,7 +197,7 @@
         </ion-card>
       </div>
     </ng-container>
-    <ng-container *ngIf="!orders.length==0">
+    <ng-container *ngIf="!orders.length==0 ">
       <ion-card *ngFor="let item of orders" color="medium" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding" fixed>
@@ -224,7 +223,13 @@
                 </div>
               </ion-col>
               <ion-col size="4">
-                <img src="../../../assets/images/map.png" height="150px" alt="" />
+                <agm-map  [usePanning]="true"  [zoom]="13" [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                  <agm-marker  [iconUrl]="obj"  [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                    <!--     <agm-info-window>{{item.address}}</agm-info-window> -->
+                  </agm-marker>
+
+                </agm-map>
+
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -264,7 +269,7 @@
       </div>
     </ng-container>
 
-    <ng-container *ngIf="!orders.length==0" >
+    <ng-container *ngIf="!orders.length==0 ">
       <ion-card *ngFor="let item of orders" color="medium" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding" fixed>
@@ -290,7 +295,13 @@
                 </div>
               </ion-col>
               <ion-col size="4">
-                <img src="../../../assets/images/map.png" height="150px" alt="" />
+                <agm-map  [usePanning]="true"  [zoom]="13" [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                  <agm-marker  [iconUrl]="obj"  [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                    <!--     <agm-info-window>{{item.address}}</agm-info-window> -->
+                  </agm-marker>
+
+                </agm-map>
+
               </ion-col>
             </ion-row>
           </ion-grid>
