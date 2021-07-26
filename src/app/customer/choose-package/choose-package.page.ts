@@ -22,7 +22,10 @@ export class ChoosePackagePage implements OnInit {
   ngOnInit() {
     this.oldobj = this.route.snapshot.queryParams;
     console.log( this.oldobj);
+  }
 
+  ionViewDidEnter() {
+    this.oldobj = this.route.snapshot.queryParams;
   }
 
   segmentChanged(ev: any) {

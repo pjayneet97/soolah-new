@@ -78,6 +78,7 @@ export class SelectCleanerPage implements OnInit {
 
   ionViewDidEnter() {
     this.finalobj = this.route.snapshot.queryParams;
+    console.log(this.finalobj)
     this.getrequesthours();
     this.gettotalCosting();
     this.cleaningSummaryCleaner = {
