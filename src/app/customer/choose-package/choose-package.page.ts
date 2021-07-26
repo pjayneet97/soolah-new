@@ -44,4 +44,9 @@ export class ChoosePackagePage implements OnInit {
       queryParams: this.newobj,
     });
   }
+
+
+
+
+
 }

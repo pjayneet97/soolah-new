@@ -58,11 +58,11 @@ export class AuthPage implements OnInit {
 
 
   async googleSignIn() {
-    /* const googleUser = (await Plugins.GoogleAuth.signIn(null)) as any;
-    console.log('my user: ', googleUser); */
+     const googleUser = (await Plugins.GoogleAuth.signIn(null)) as any;
+    console.log('my user: ', googleUser);
      this.common.startLoader();
   /*    alert(googleUser) */
-  let emailpart="frankcustomer@gmail.com"
+  let emailpart=googleUser.email
      this.service
        .login({
          email:emailpart,

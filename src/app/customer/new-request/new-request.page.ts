@@ -18,6 +18,7 @@ export class NewRequestPage implements OnInit {
   cleaningRequestedFromDate: any = null;
   cleaningRequestedToDate: any = null;
   today: any;
+  requestedHours=0
   type: 'string'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
   optionsRange: CalendarComponentOptions = {
     pickMode: 'range',
@@ -93,6 +94,7 @@ export class NewRequestPage implements OnInit {
     this.endTime.setHours(end);
     this.endTime.setMinutes(0);
     this.endTime.setSeconds(0);
+
   }
 
   isValid() {
@@ -102,11 +104,24 @@ export class NewRequestPage implements OnInit {
       this.startTime &&
       this.endTime &&
       this.cleaningType &&
-      this.cleaningaddress
-    ) {
+      this.cleaningaddress && this.getrequesthours() ) {
       return true;
     } else {
       return false;
     }
   }
+
+  getrequesthours() {
+    let start = new Date(this.startTime).getHours();
+    let end = new Date(this.endTime).getHours();
+    this.requestedHours = end - start;
+    console.log(this.requestedHours);
+    if(this.requestedHours >=4) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+
 }
