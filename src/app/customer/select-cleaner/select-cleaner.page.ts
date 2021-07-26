@@ -11,6 +11,7 @@ export class SelectCleanerPage implements OnInit {
   finalobj: any;
   tax = 0;
   totalcost = 0;
+  addoncost=15
   public cleaningSummaryCleaner: {
     cleaningStartTime: string;
     cleaningEndTime: string;

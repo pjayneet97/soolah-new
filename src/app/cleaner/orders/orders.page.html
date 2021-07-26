@@ -55,7 +55,7 @@
     </ng-container>
 
 
-    <ng-container *ngIf="!orders.length==0 ">
+    <ng-container *ngIf="orders.length!=0">
       <ion-card *ngFor="let item of orders" color="medium" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding" fixed>
@@ -82,7 +82,7 @@
               </ion-col>
               <ion-col size="4">
                 <agm-map  [usePanning]="true"  [zoom]="13" [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
-                  <agm-marker  [iconUrl]="obj"  [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                  <agm-marker    [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
                     <!--     <agm-info-window>{{item.address}}</agm-info-window> -->
                   </agm-marker>
 
@@ -126,7 +126,7 @@
         </ion-card>
       </div>
     </ng-container>
-    <ng-container *ngIf="!orders.length==0 ">
+    <ng-container *ngIf="orders.length!=0 ">
       <ion-card *ngFor="let item of orders" color="medium" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding" fixed>
@@ -153,7 +153,7 @@
               </ion-col>
               <ion-col size="4">
                 <agm-map  [usePanning]="true"  [zoom]="13" [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
-                  <agm-marker  [iconUrl]="obj"  [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                  <agm-marker    [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
                     <!--     <agm-info-window>{{item.address}}</agm-info-window> -->
                   </agm-marker>
 
@@ -197,7 +197,7 @@
         </ion-card>
       </div>
     </ng-container>
-    <ng-container *ngIf="!orders.length==0 ">
+    <ng-container *ngIf="orders.length!=0 ">
       <ion-card *ngFor="let item of orders" color="medium" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding" fixed>
@@ -224,7 +224,7 @@
               </ion-col>
               <ion-col size="4">
                 <agm-map  [usePanning]="true"  [zoom]="13" [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
-                  <agm-marker  [iconUrl]="obj"  [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                  <agm-marker    [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
                     <!--     <agm-info-window>{{item.address}}</agm-info-window> -->
                   </agm-marker>
 
@@ -269,7 +269,7 @@
       </div>
     </ng-container>
 
-    <ng-container *ngIf="!orders.length==0 ">
+    <ng-container *ngIf="orders.length!=0">
       <ion-card *ngFor="let item of orders" color="medium" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding" fixed>
@@ -296,7 +296,7 @@
               </ion-col>
               <ion-col size="4">
                 <agm-map  [usePanning]="true"  [zoom]="13" [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
-                  <agm-marker  [iconUrl]="obj"  [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
+                  <agm-marker   [latitude]="item.bookingId.cleaningLocationLattitude" [longitude]="item.bookingId.cleaningLocationLongitude">
                     <!--     <agm-info-window>{{item.address}}</agm-info-window> -->
                   </agm-marker>
 

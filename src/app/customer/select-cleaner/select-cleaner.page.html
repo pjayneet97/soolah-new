@@ -98,17 +98,17 @@
           <b>Total Billing : </b>
           <div class="pad">Service Hours : <span *ngIf="requestedHour!=0"> {{requestedHour}} </span></div>
           <div class="pad">Tax : <span *ngIf="tax!=0"> {{tax}} </span> </div>
-          <div class="pad">add-on : <span *ngIf="finalcleaningSummary.optionalAddOn"> 15 Dollar </span></div>
+          <div class="pad">Add-on : <span *ngIf="finalcleaningSummary.optionalAddOn"> $ {{addoncost}} </span></div>
         </ion-col>
         <ion-col size="4">
-          <ion-text class="text-big" *ngIf="finalselectedCleanerscount!=0" color="primary">{{totalcost}}</ion-text>
+          <ion-text class="text-big" *ngIf="finalselectedCleanerscount!=0" color="primary"> $ {{totalcost}}</ion-text>
         </ion-col>
       </ion-row>
     </ion-grid>
 
   </div>
   <div class="ion-padding">
-    <ion-button (click)="createBooking()" [disbaled]="finalselectedCleanerscount==0" class="btn-txt" expand="block" color="primary" shape="round">
+    <ion-button (click)="createBooking()" [disabled]="finalselectedCleanerscount==0" class="btn-txt" expand="block" color="primary" shape="round">
       Send Requests
     </ion-button>
   </div>
