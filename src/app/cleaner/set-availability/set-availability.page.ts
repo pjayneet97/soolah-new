@@ -99,9 +99,14 @@ export class SetAvailabilityPage implements OnInit {
 
   save() {
     this.FinalSelectedSlots();
-    let payload = [];
+    let payload = {selectedDates:[]};
     this.dates.forEach((selectedDate) => {
       this.selectedSlots.forEach((slot) => {
+        let date = new Date(selectedDate);
+        date.setHours(5);
+        date.setMinutes(30);
+        date.setSeconds(0);
+        console.log(date.toISOString())
         let fromTime = new Date(selectedDate);
         fromTime.setHours(slot.from);
         fromTime.setMinutes(0);
@@ -111,12 +116,12 @@ export class SetAvailabilityPage implements OnInit {
         toTime.setMinutes(0);
         toTime.setSeconds(0);
         let tempobj = {
-          fromDate: new Date(selectedDate).toISOString(),
-          toDate: new Date(selectedDate).toISOString(),
-          fromTime: fromTime.toISOString(),
-          toTime: toTime.toISOString(),
+          fromDate: date.toISOString().replace('Z', '+05:30'),
+          toDate: date.toISOString().replace('Z', '+05:30'),
+          fromTime: fromTime.toISOString().replace('Z', '+05:30'),
+          toTime: toTime.toISOString().replace('Z', '+05:30'),
         };
-        payload.push(tempobj);
+        payload.selectedDates.push(tempobj);
       });
     });
     this.service.setAvailability(payload).subscribe((Res) => {

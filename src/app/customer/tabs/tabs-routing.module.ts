@@ -29,6 +29,14 @@ const routes: Routes = [
         loadChildren: () => import('../choose-package/choose-package.module').then(m => m.ChoosePackagePageModule)
       },
       {
+        path: 'waiting-for-approval',
+        loadChildren: () => import('../waiting-for-approval/waiting-for-approval.module').then(m => m.WaitingForApprovalPageModule)
+      },
+      {
+        path: 'notifications',
+        loadChildren: () => import('../notifications/notifications.module').then(m => m.NotificationsPageModule)
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'

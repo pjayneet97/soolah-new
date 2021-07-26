@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { CleanerService } from '../cleaner.service';
 
 @Component({
   selector: 'app-notifications',
@@ -7,8 +8,8 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./notifications.page.scss'],
 })
 export class NotificationsPage implements OnInit {
-
-  constructor(public alertController: AlertController) { }
+  notificationsdata=[]
+  constructor(public alertController: AlertController,public service:CleanerService) { }
 
   ngOnInit() {
   }
@@ -37,6 +38,13 @@ export class NotificationsPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+
+  ionViewDidEnter() {
+    this.service.getAllNotifications().subscribe(res=>{
+      this.notificationsdata=res["data"]
+    })
   }
 
 

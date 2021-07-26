@@ -8,18 +8,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="service.tempbookingdata">
 
   <ion-grid class="ion-padding-end ion-padding-start ion-padding-top" fixed>
     <ion-row>
-      <img src="../../../assets/images/avatar.png" width="50" height="50" class="img-round" alt="">
-      <span class="ion-padding"> Robin Customer</span>
+      <img [src]="profile?.profilePic" width="50" height="50" class="img-round" alt="">
+      <span class="ion-padding">{{profile?.firstName}} {{profile?.lastName}}</span>
     </ion-row>
     <br>
     <div>
-      <div class="text-small"> Residential </div>
-      <div class="text-small"> Monday 24th August 2021 </div>
-      <div class="text-small"> 11:00 am - 11:30 am </div>
+      <div class="text-small pad"> {{service.tempbookingdata?.cleaningType}} </div>
+      <div class="text-small pad"> {{service.tempbookingdata?.cleaningRequestedFromDate | date}} to
+        {{service.tempbookingdata?.cleaningRequestedToDate | date}} </div>
+      <div class="text-small pad"> {{service.tempbookingdata?.cleaningStartTime | date:'shortTime'}} -
+        {{service.tempbookingdata?.cleaningEndTime | date:'shortTime'}}</div>
     </div>
   </ion-grid>
   <ion-item-divider>
@@ -33,11 +35,15 @@
   <div class="ion-padding">
 
     <p>
-      <ion-icon name="time"></ion-icon> 2 hr
+      <ion-icon name="time"></ion-icon> <span style="text-transform: capitalize;">
+        {{service.tempbookingdata?.cleaningType}} </span>
     </p>
 
     <p>
-      <ion-icon name="calendar"></ion-icon> 9:00 am to 11:00 am 24th August Tuesday
+      <ion-icon name="calendar"></ion-icon> {{service.tempbookingdata?.cleaningStartTime | date:'shortTime'}} -
+      {{service.tempbookingdata?.cleaningEndTime | date:'shortTime'}}
+      {{service.tempbookingdata?.cleaningRequestedFromDate | date}} to
+      {{service.tempbookingdata?.cleaningRequestedToDate | date}}
     </p>
 
     <p>
@@ -48,9 +54,12 @@
 
   <div class="ion-padding">
 
-    <p class="ion-text-center">
-      A request for the appointment will be sent to the cleaner. Please wait until it gets confirmed. Thankyou for your
-      patience
+    <p class="ion-text-center ">
+      <ion-text color="secondary">
+        A request for the appointment will be sent to the cleaner. Please wait until it gets confirmed. Thank you for
+        your
+        patience
+      </ion-text>
     </p>
 
   </div>

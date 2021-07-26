@@ -6,10 +6,11 @@
       <ion-label [color]="selectedTab == 'home' ? 'secondary': 'primary'">Home</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="cleaner" (click)="setCurrentTab('cleaner')">
-      <ion-icon *ngIf="selectedTab == 'cleaner'" src="../../assets/nav/bookings-active.svg"></ion-icon>
-      <ion-icon *ngIf="selectedTab != 'cleaner'" src="../../assets/nav/bookings.svg"></ion-icon>
-      <ion-label [color]="selectedTab == 'cleaner' ? 'secondary': 'primary'">Bookings</ion-label>
+    <ion-tab-button tab="notifications" (click)="setCurrentTab('notifications')">
+      <ion-badge color="primary" *ngIf="profile?.unReadNotifications">{{profile?.unReadNotifications}}</ion-badge>
+      <ion-icon *ngIf="selectedTab == 'notifications'" src="../../assets/nav/notifications.svg"></ion-icon>
+      <ion-icon *ngIf="selectedTab != 'notifications'" src="../../assets/nav/notifications.svg"></ion-icon>
+      <ion-label [color]="selectedTab == 'notifications' ? 'secondary': 'primary'">Notifications</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="payments" (click)="setCurrentTab('payments')">

@@ -37,14 +37,14 @@
       <ion-col size="6">
         <ion-item>
           <ion-label color="primary" >Start Time</ion-label>
-          <ion-datetime display-format="h:mm A" picker-format="h:mm A" (ionChange)="starttimechanged($event)"
+          <ion-datetime [disabled]="!cleaningRequestedToDate && !cleaningRequestedFromDate" display-format="h:mm A" picker-format="h:mm A" (ionChange)="starttimechanged($event)"
             minuteValues="0" value="1990-02-19T01:30Z"></ion-datetime>
         </ion-item>
       </ion-col>
       <ion-col size="6">
         <ion-item>
           <ion-label color="primary">End Time</ion-label>
-          <ion-datetime display-format="h:mm A" picker-format="h:mm A" (ionChange)="endtimechanged($event)"
+          <ion-datetime [disabled]="!cleaningRequestedToDate && !cleaningRequestedFromDate" display-format="h:mm A" picker-format="h:mm A" (ionChange)="endtimechanged($event)"
             minuteValues="0" value="1990-02-19T02:30Z"></ion-datetime>
         </ion-item>
       </ion-col>

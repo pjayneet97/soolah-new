@@ -132,4 +132,9 @@ export class CleanerService {
 
 
 
+  getAllNotifications() {
+    return this.http.get(environment.baseUrl + '/api/v1/account/cleanerNotifications')
+  }
+
+
 }

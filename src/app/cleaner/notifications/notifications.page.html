@@ -11,46 +11,21 @@
 <ion-content class="ion-no-padding">
 
   <div class="ion-padding">
-    <small> August 24 2012</small>
+    <ng-container  *ngFor="let item of notificationsdata">
+      <ion-card color="success"  *ngIf="item.notificationData.type=='ORDER_CREATED'" class="card-border-radius">
+        <ion-grid fixed>
+        <!--   <small>  {{item.createdAt | date}}  </small> -->
+          <ion-row>
+            <ion-col size="2">
+              <ion-icon style="padding: 5px;" name="notifications" size="small"></ion-icon>
+            </ion-col>
+            <ion-col size="10"> <small> {{item.notificationData.firstName}} {{item.notificationData.lastName}} has sent you a request for a job </small></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
 
-    <ion-card (click)="presentAlertConfirm()" color="primary" class="card-border-radius">
-      <ion-grid fixed>
-        <ion-row>
-          <ion-col size="2">   <ion-icon name="notifications" size="large"></ion-icon>
-          </ion-col>
-          <ion-col size="10">        <small> Your request has been accepted by cleaner</small></ion-col>
-        </ion-row>
-      </ion-grid>
+    </ng-container>
 
-
-    </ion-card>
-
-    <small> August 24 2012</small>
-
-    <ion-card color="success" class="card-border-radius">
-      <ion-grid fixed>
-        <ion-row>
-          <ion-col size="2">   <ion-icon name="notifications" size="large"></ion-icon>
-          </ion-col>
-          <ion-col size="10">        <small> Your request has been accepted by cleaner</small></ion-col>
-        </ion-row>
-      </ion-grid>
-
-
-    </ion-card>
-
-
-    <ion-card color="warning" class="card-border-radius">
-      <ion-grid fixed>
-        <ion-row>
-          <ion-col size="2">   <ion-icon name="notifications" size="large"></ion-icon>
-          </ion-col>
-          <ion-col size="10">        <small> Your request has been accepted by cleaner</small></ion-col>
-        </ion-row>
-      </ion-grid>
-
-
-    </ion-card>
 
   </div>
 

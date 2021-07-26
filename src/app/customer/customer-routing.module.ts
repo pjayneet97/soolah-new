@@ -25,11 +25,6 @@ const routes: Routes = [
     loadChildren: () => import('./notifications/notifications.module').then(m => m.NotificationsPageModule)
   },
   {
-    path: 'waiting-for-approval',
-    canActivate: [CustomerGuardService],
-    loadChildren: () => import('./waiting-for-approval/waiting-for-approval.module').then(m => m.WaitingForApprovalPageModule)
-  },
-  {
     path: 'choose-package',
     canActivate: [CustomerGuardService],
     loadChildren: () => import('./choose-package/choose-package.module').then(m => m.ChoosePackagePageModule)

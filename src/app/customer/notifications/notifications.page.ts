@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-notifications',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notifications.page.scss'],
 })
 export class NotificationsPage implements OnInit {
-  
-  constructor() { }
+  notificationsdata=[]
+  constructor(public service:CustomerService) { }
 
   ngOnInit() {
   }
+
+  ionViewDidEnter() {
+    this.service.getAllNotifications().subscribe(res=>{
+      this.notificationsdata=res["data"]
+    })
+  }
+
 
 }

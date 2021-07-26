@@ -36,31 +36,40 @@ export class NewRequestPage implements OnInit {
 
   onDateChange($event) {
     /*  console.log(new Date($event[0]._i)); */
-    console.log(this.dates);
+
     let FromDate= new Date(this.dates.from._d)
-    console.log(FromDate.toISOString())
-    this.cleaningRequestedFromDate =FromDate.toISOString()
+    FromDate.setHours(5)
+    FromDate.setMinutes(30)
+    FromDate.setSeconds(0)
+    this.cleaningRequestedFromDate =FromDate.toISOString().replace('Z', '+05:30')
+    console.log(this.cleaningRequestedFromDate)
     let ToDate= new Date(this.dates.to._d)
-    this.cleaningRequestedToDate = ToDate.toISOString();
+    ToDate.setHours(5)
+    ToDate.setMinutes(30)
+    ToDate.setSeconds(0)
+    this.cleaningRequestedToDate = ToDate.toISOString().replace('Z', '+05:30');
+    console.log(this.cleaningRequestedToDate)
   }
 
 
-  ngOnInit() {}
+  ngOnInit() {  this.startTime=null
+    this.endTime=null
+    this.cleaningRequestedFromDate=null
+    this.cleaningRequestedToDate=null}
 
-  ionViewDidEnter() {}
+  ionViewDidEnter() {
+
+  }
 
   navigate() {
-    (this.cleaningRequestedFromDate = new Date(
-      this.dates.from._i
-    ).toISOString()),
       this.router.navigate(['/customer/choose-package'], {
         queryParams: {
           cleaningType: this.cleaningType,
           cleaningLocationAddress: this.cleaningaddress.address,
           cleaningLocationLattitude: this.cleaningaddress.lat,
           cleaningLocationLongitude: this.cleaningaddress.long,
-          cleaningStartTime: this.startTime.toISOString(),
-          cleaningEndTime: this.endTime.toISOString(),
+          cleaningStartTime: this.startTime.toISOString().replace('Z', '+05:30'),
+          cleaningEndTime: this.endTime.toISOString().replace('Z', '+05:30'),
           cleaningRequestedFromDate: this.cleaningRequestedFromDate,
           cleaningRequestedToDate: this.cleaningRequestedToDate,
         },
@@ -70,21 +79,20 @@ export class NewRequestPage implements OnInit {
   starttimechanged($event) {
     let time = new Date($event.detail.value);
     let start = time.getHours();
-    this.startTime = new Date(this.dates.from._i);
+    this.startTime = new Date(this.cleaningRequestedFromDate);
     this.startTime.setHours(start);
     this.startTime.setMinutes(0);
     this.startTime.setSeconds(0);
-    console.log(this.startTime.toISOString());
+
   }
 
   endtimechanged($event) {
     let time = new Date($event.detail.value);
     let end = time.getHours();
-    this.endTime = new Date(this.dates.from._i);
+    this.endTime = new Date(this.cleaningRequestedFromDate);
     this.endTime.setHours(end);
     this.endTime.setMinutes(0);
     this.endTime.setSeconds(0);
-    console.log(this.endTime.toISOString());
   }
 
   isValid() {

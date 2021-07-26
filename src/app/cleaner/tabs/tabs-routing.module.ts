@@ -7,34 +7,51 @@ const routes: Routes = [
   {
     path: '',
     component: TabsPage,
-    children:[
+    children: [
       {
         path: 'home',
-        loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
+        loadChildren: () =>
+          import('../home/home.module').then((m) => m.HomePageModule),
       },
       {
         path: 'profile',
-        loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)
+        loadChildren: () =>
+          import('../profile/profile.module').then((m) => m.ProfilePageModule),
       },
       {
         path: 'orders',
-        loadChildren: () => import('../orders/orders.module').then( m => m.OrdersPageModule)
+        loadChildren: () =>
+          import('../orders/orders.module').then((m) => m.OrdersPageModule),
       },
       {
         path: 'set-availability',
-        loadChildren: () => import('../set-availability/set-availability.module').then( m => m.SetAvailabilityPageModule)
+        loadChildren: () =>
+          import('../set-availability/set-availability.module').then(
+            (m) => m.SetAvailabilityPageModule
+          ),
       },
       {
         path: 'set-availability-success',
-        loadChildren: () => import('../set-availability-success/set-availability-success.module').then( m => m.SetAvailabilitySuccessPageModule)
+        loadChildren: () =>
+          import(
+            '../set-availability-success/set-availability-success.module'
+          ).then((m) => m.SetAvailabilitySuccessPageModule),
+      },
+
+      {
+        path: 'notifications',
+        loadChildren: () =>
+          import('../notifications/notifications.module').then(
+            (m) => m.NotificationsPageModule
+          ),
       },
       {
         path: '',
         redirectTo: 'home',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({

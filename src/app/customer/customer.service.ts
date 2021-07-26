@@ -9,6 +9,7 @@ import { CommonService } from '../services/common.service';
 })
 export class CustomerService {
   role = "customer" // use this role to send it with object
+  tempbookingdata:any
   constructor(public http: HttpClient,public router:Router,public common:CommonService) { }
 
 
@@ -118,6 +119,11 @@ export class CustomerService {
    return str.join("&");
   }
 
+
+
+  getAllNotifications() {
+    return this.http.get(environment.baseUrl + '/api/v1/account/customerNotifications')
+  }
 
 
 

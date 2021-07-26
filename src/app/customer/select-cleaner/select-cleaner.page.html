@@ -20,23 +20,26 @@
             <img height="50" src="../../../assets/images/Rectangle 159.png" alt="">
           </ion-col>
           <ion-col class="ion-text-left ion-padding-start" size="6">
-            <ion-text class="small-text" color="dark">Choosen {{ packageType}} Package
+            <ion-text class="small-text" color="dark">Choosen {{finalcleaningSummary.packageType}} Package
               <br>
               <ng-container>
-                <ion-text color="primary" *ngIf="!optionalAddOn"> No Add ons </ion-text>
-                <ion-icon color="primary" name="add-circle" *ngIf="!optionalAddOn" (click)="addOnSupply()"></ion-icon>
-                <ion-text color="primary" *ngIf="optionalAddOn">Add on selected </ion-text>
-                <ion-icon color="primary" *ngIf="optionalAddOn" name="remove-circle" (click)="addOnSupply()"></ion-icon>
+                <ion-text color="primary" *ngIf="!finalcleaningSummary.optionalAddOn"> No Add ons </ion-text>
+                <ion-icon color="primary" name="add-circle" *ngIf="!finalcleaningSummary.optionalAddOn"
+                  (click)="addOnSupply()"></ion-icon>
+                <ion-text color="primary" *ngIf="finalcleaningSummary.optionalAddOn">Add on selected </ion-text>
+                <ion-icon color="primary" *ngIf="finalcleaningSummary.optionalAddOn" name="remove-circle"
+                  (click)="addOnSupply()"></ion-icon>
               </ng-container>
 
             </ion-text>
 
           </ion-col>
-          <ion-col *ngIf="packageType=='luxurious'" class="ion-text-left ion-padding-start" size="4">
-            <ion-text color="light">$ 30.00 / Hr</ion-text>
+          <ion-col *ngIf="finalcleaningSummary.packageType=='luxurious'" class="ion-text-left ion-padding-start"
+            size="4">
+            <ion-text color="dark">$ 30.00 / Hr</ion-text>
           </ion-col>
-          <ion-col *ngIf="packageType=='basic'" class="ion-text-left ion-padding-start" size="4">
-            <ion-text color="light">$ 25.00 / Hr</ion-text>
+          <ion-col *ngIf="finalcleaningSummary.packageType=='basic'" class="ion-text-left ion-padding-start" size="4">
+            <ion-text color="dark">$ 25.00 / Hr</ion-text>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -48,10 +51,10 @@
     <ion-text color="primary" class="ion-padding-end ion-padding-start"> How many cleaners do you need ?</ion-text>
   </div>
   <h6 style="padding: 5px;">
-    <ion-icon color="success"  style="position: absolute;right: 20px;" name="caret-up-outline"></ion-icon>
+    <ion-icon color="success" style="position: absolute;right: 20px;" name="caret-up-outline"></ion-icon>
   </h6>
 
-  <div  style="height: 200px;overflow: auto;">
+  <div style="height: 200px;overflow: auto;">
     <ion-card *ngIf="cleaners.length==0" class="ion-text-center dark-color card-border-radius">
       <ion-card-content class="ion-padding">
         <h6>No Cleaners Available</h6>
@@ -59,22 +62,22 @@
     </ion-card>
     <ng-container>
 
-      <ion-card *ngFor="let cleaner of cleaners" class="ion-text-center dark-color card-border-radius">
+      <ion-card (click)="selectCleaners(i)" [ngClass]="{'bg-success': cleaner.selected}"
+        *ngFor="let cleaner of cleaners;let i =index" class="ion-text-center dark-color card-border-radius">
         <ion-card-content class="ion-no-padding">
           <ion-grid class="ion-no-padding">
-            <ion-row class="ion-padding-top">
-              <ion-col size="3">
+            <ion-row>
+              <ion-col size="3" class="ion-padding-top">
                 <img class="img-round" height="50" width="50" src="../../../assets/images/Rectangle 159.png" alt="">
               </ion-col>
               <ion-col class="ion-text-left" size="5">
-                <ion-text class="small-text" color="light">{{cleaner.firstName}} {{cleaner.lastName}}
+                <ion-text class="small-text">{{cleaner.firstName}} {{cleaner.lastName}}
                 </ion-text>
 
               </ion-col>
               <ion-col class="ion-text-right ion-padding-end" size="4">
-                <ion-text class="price-bottom" color="success">$ 230</ion-text>
-
-
+                <ion-text *ngIf="finalcleaningSummary.packageType=='luxurious'" class="price-bottom">$ 30</ion-text>
+                <ion-text *ngIf="finalcleaningSummary.packageType=='basic'" class="price-bottom">$ 25</ion-text>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -93,19 +96,19 @@
       <ion-row class="text-small">
         <ion-col class="ion-no-padding" size="8">
           <b>Total Billing : </b>
-          <div>Service Hours : <span *ngIf="requestedHour!=0"> {{requestedHour}} </span></div>
-          <div>Tax : <span *ngIf="tax!=0"> {{tax}} </span> </div>
-          <div>add-on : <span *ngIf="optionalAddOn"> 15 Dollar </span></div>
+          <div class="pad">Service Hours : <span *ngIf="requestedHour!=0"> {{requestedHour}} </span></div>
+          <div class="pad">Tax : <span *ngIf="tax!=0"> {{tax}} </span> </div>
+          <div class="pad">add-on : <span *ngIf="finalcleaningSummary.optionalAddOn"> 15 Dollar </span></div>
         </ion-col>
         <ion-col size="4">
-          <ion-text class="text-big" color="primary">{{totalcost}}</ion-text>
+          <ion-text class="text-big" *ngIf="finalselectedCleanerscount!=0" color="primary">{{totalcost}}</ion-text>
         </ion-col>
       </ion-row>
     </ion-grid>
 
   </div>
   <div class="ion-padding">
-    <ion-button (click)="createBooking()" class="btn-txt" expand="block" color="primary" shape="round">
+    <ion-button (click)="createBooking()" [disbaled]="finalselectedCleanerscount==0" class="btn-txt" expand="block" color="primary" shape="round">
       Send Requests
     </ion-button>
   </div>

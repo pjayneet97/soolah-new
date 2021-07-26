@@ -10,18 +10,33 @@
 </ion-header>
 <ion-content class="ion-no-padding">
   <div class="ion-padding">
-    <small> August 24 2012</small>
-    <ion-card color="primary" class="card-border-radius">
-      <ion-grid fixed>
-        <ion-row>
-          <ion-col size="2">
-            <ion-icon name="notifications" size="large"></ion-icon>
-          </ion-col>
-          <ion-col size="10"> <small> Your request has been accepted by cleaner</small></ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>
-    <small> August 24 2012</small>
+    <!-- <small> August 24 2012</small> -->
+    <ng-container  *ngFor="let item of notificationsdata">
+      <ion-card color="success"  *ngIf="item.notificationData.type=='ORDER_ACCEPTED'" class="card-border-radius">
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="2">
+              <ion-icon name="notifications" size="large"></ion-icon>
+            </ion-col>
+            <ion-col size="10"> <small> Your request has been accepted by {{item.notificationData.firstName}} {{item.notificationData.lastName}}</small></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <ion-card color="danger" *ngIf="item.notificationData.type=='ORDER_REJECTED'"  class="card-border-radius">
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="2">
+              <ion-icon name="notifications" size="large"></ion-icon>
+            </ion-col>
+            <ion-col size="10"> <small> Your request has been rejected by {{item.notificationData.firstName}} {{item.notificationData.lastName}}</small></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ng-container>
+
+
+
+  <!--   <small> August 24 2012</small>
     <ion-card color="success" class="card-border-radius">
       <ion-grid fixed>
         <ion-row>
@@ -41,6 +56,6 @@
           <ion-col size="10"> <small> Your request has been accepted by cleaner</small></ion-col>
         </ion-row>
       </ion-grid>
-    </ion-card>
+    </ion-card> -->
   </div>
 </ion-content>

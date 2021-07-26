@@ -43,7 +43,11 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },  {
+    path: 'dialog',
+    loadChildren: () => import('./dialog/dialog.module').then( m => m.DialogPageModule)
   }
+
 
 
 ];
