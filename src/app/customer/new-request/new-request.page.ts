@@ -62,7 +62,7 @@ export class NewRequestPage implements OnInit {
   }
 
   navigate() {
-      this.router.navigate(['/customer/choose-package'], {
+      this.router.navigate(['/customer/home/choose-package'], {
         queryParams: {
           cleaningType: this.cleaningType,
           cleaningLocationAddress: this.cleaningaddress.address,

@@ -141,7 +141,7 @@ export class SelectCleanerPage implements OnInit {
     this.service.createBooking(this.finalcleaningSummary).subscribe((res) => {
       console.log(res);
       this.service.tempbookingdata = res['data'];
-      this.router.navigateByUrl('customer/waiting-for-approval');
+      this.router.navigateByUrl('customer/home/waiting-for-approval');
     });
   }
 

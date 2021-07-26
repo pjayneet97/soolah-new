@@ -16,22 +16,7 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
       },
-      {
-        path: 'new-request',
-        loadChildren: () => import('../new-request/new-request.module').then(m => m.NewRequestPageModule)
-      },
-      {
-        path: 'select-cleaner',
-        loadChildren: () => import('../select-cleaner/select-cleaner.module').then(m => m.SelectCleanerPageModule)
-      },
-      {
-        path: 'choose-package',
-        loadChildren: () => import('../choose-package/choose-package.module').then(m => m.ChoosePackagePageModule)
-      },
-      {
-        path: 'waiting-for-approval',
-        loadChildren: () => import('../waiting-for-approval/waiting-for-approval.module').then(m => m.WaitingForApprovalPageModule)
-      },
+     
       {
         path: 'notifications',
         loadChildren: () => import('../notifications/notifications.module').then(m => m.NotificationsPageModule)

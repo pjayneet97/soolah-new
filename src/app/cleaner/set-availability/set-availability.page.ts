@@ -125,7 +125,7 @@ export class SetAvailabilityPage implements OnInit {
       });
     });
     this.service.setAvailability(payload).subscribe((Res) => {
-      this.router.navigateByUrl('/cleaner/set-availability-success');
+      this.router.navigateByUrl('/cleaner/home/set-availability-success');
     });
     console.log(payload);
   }

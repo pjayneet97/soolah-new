@@ -40,7 +40,7 @@ export class ChoosePackagePage implements OnInit {
 
   navigate() {
     this.newobj = {...this.oldobj,...{ optionalAddOn: this.optionalAddOn,packageType: this.mode  }};
-    this.router.navigate(['/customer/select-cleaner'], {
+    this.router.navigate(['/customer/home/select-cleaner'], {
       queryParams: this.newobj,
     });
   }

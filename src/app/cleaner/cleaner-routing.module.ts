@@ -13,7 +13,6 @@ const routes: Routes = [
     canActivate:[CleanerGuardService],
     loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
-
   {
     path: 'notifications',
     canActivate:[CleanerGuardService],
@@ -43,7 +42,8 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },  {
+  },
+  {
     path: 'dialog',
     loadChildren: () => import('./dialog/dialog.module').then( m => m.DialogPageModule)
   }
