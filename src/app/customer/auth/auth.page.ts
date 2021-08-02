@@ -5,6 +5,8 @@ import { CommonService } from 'src/app/services/common.service';
 import { CustomerService } from '../customer.service';
 import '@codetrix-studio/capacitor-google-auth';
 import { Capacitor, Plugins } from '@capacitor/core';
+ 
+const { SignInWithApple } = Plugins
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.page.html',
@@ -104,6 +106,55 @@ export class AuthPage implements OnInit {
      else {
        return false;
      }
+   }
+
+   isPlatformAndroid() {
+    if(Capacitor.getPlatform() === 'android') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+   async appleSignIn(){
+    const googleUser = (await SignInWithApple.Authorize()) as any;
+    console.log('my user: ', googleUser);
+     this.common.startLoader();
+     alert(JSON.stringify(googleUser))
+    let emailpart=googleUser.email
+     this.service
+       .login({
+         email:emailpart,
+         role: 'customer',
+         signUpWithGoogle: false,
+         signUpWithApple: true,
+         signUpWithFacebook: false,
+         API_KEY: 'SOOLAH8F3D091909DC29SECRET',
+       }).subscribe(
+         (res: any) => {
+           if(res.data.firstTimeUser) {
+             this.router.navigate(['/customer/register'],{ queryParams: { email: emailpart,signUpWithApple:true}});
+             this.common.stopLoader();
+           }
+           else {
+             this.service.setUserData(res.data);
+             this.service.setEncryptedToken(res.data.encryptedToken);
+             this.common.stopLoader();
+             this.loginForm.reset();
+             this.router.navigateByUrl('/' + this.role + '/home');
+           }
+         },
+         (err) => {
+          if(err.error.code==400) {
+            this.router.navigate(['/customer/register'],{ queryParams: { email:  emailpart,signUpWithApple:true}});
+            this.common.stopLoader();
+          }
+          this.common.stopLoader()
+          this.common.errorHandler(err.error)
+         }
+       );
+     //alert(JSON.stringify(googleUser))
    }
 
 }

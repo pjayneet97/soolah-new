@@ -16,12 +16,12 @@
     </div>
 
     <div *ngIf="isPlatformApple()" class="ion-padding-start ion-padding-bottom ion-padding-end">
-      <ion-button type="button" color="dark" size="large" expand="block">
+      <ion-button (click)="appleSignIn()" type="button" color="dark" size="large" expand="block">
         <ion-icon name="logo-apple" slot="start"></ion-icon>
         <small>Continue with Apple Id</small>
       </ion-button>
     </div>
-    <div class="ion-padding-start ion-padding-bottom ion-padding-end">
+    <div *ngIf="isPlatformAndroid()" class="ion-padding-start ion-padding-bottom ion-padding-end">
       <ion-button (click)="googleSignIn()" type="button" class="bg-google" color="none" size="large" expand="block">
         <ion-icon name="logo-google" slot="start"></ion-icon>
         <small>Continue with google</small>

@@ -1,5 +1,5 @@
 {
-	"appId": "com.soolah.cleanerapp",
+	"appId": "com.soolah.app",
 	"appName": "soolah",
 	"webDir": "www",
 	"bundledWebRuntime": false,
