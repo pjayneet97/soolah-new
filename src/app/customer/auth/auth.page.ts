@@ -104,7 +104,7 @@ export class AuthPage implements OnInit {
        return true;
      }
      else {
-       return false;
+       return true;
      }
    }
 
@@ -118,7 +118,11 @@ export class AuthPage implements OnInit {
   }
 
    async appleSignIn(){
-    const googleUser = (await SignInWithApple.Authorize()) as any;
+    const googleUser =  SignInWithApple.Authorize().then(res=>{
+      console.log(res)
+    }).catch(err=>{
+      console.log(err)
+    })
     console.log('my user: ', googleUser);
      this.common.startLoader();
      alert(JSON.stringify(googleUser))

@@ -5,7 +5,10 @@ import { CommonService } from 'src/app/services/common.service';
 import { CleanerService } from '../cleaner.service';
 import '@codetrix-studio/capacitor-google-auth';
 import { Capacitor, Plugins } from '@capacitor/core';
-const { SignInWithApple } = Plugins
+// const { SignInWithApple } = Plugins
+import {
+  SignInWithApple, SignInWithAppleOptions
+} from '@capacitor-community/apple-sign-in';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.page.html',
@@ -107,7 +110,7 @@ export class AuthPage implements OnInit {
       return true;
     }
     else {
-      return false;
+      return true;
     }
   }
 
@@ -122,43 +125,60 @@ export class AuthPage implements OnInit {
 
 
   async appleSignIn(){
-    const googleUser = (await SignInWithApple.Authorize()) as any;
-    console.log('my user: ', googleUser);
-     this.common.startLoader();
-     alert(JSON.stringify(googleUser))
-     let emailpart=googleUser.email
-     this.service
-       .login({
-         email:emailpart,
-         role: 'cleaner',
-         signUpWithGoogle: false,
-         signUpWithApple:true,
-         signUpWithFacebook: false,
-         API_KEY: 'SOOLAH8F3D091909DC29SECRET',
-       }).subscribe(
-         (res: any) => {
-           if(res.data.firstTimeUser) {
-             this.router.navigate(['/cleaner/register'],{ queryParams: { email: emailpart,signUpWithApple:true}});
-             this.common.stopLoader();
-           }
-           else {
-             this.service.setUserData(res.data);
-             this.service.setEncryptedToken(res.data.encryptedToken);
-             this.common.stopLoader();
-             this.loginForm.reset();
-             this.router.navigateByUrl('/' + this.role + '/home');
-           }
-         },
-         (err) => {
-           console.log(err)
-           this.common.stopLoader()
-           if(err.error.code==400) {
-             this.router.navigate(['/cleaner/register'],{ queryParams: { email: emailpart,signUpWithApple:true}});
-             this.common.stopLoader();
-           }
-           this.common.errorHandler(err.error)
-         }
-       );
+    let options: SignInWithAppleOptions = {
+      clientId: 'com.soolah.app',
+      redirectURI: 'https://www.yourfrontend.com/login',
+      scopes: 'email name',
+      //state: '12345',
+      //nonce: 'nonce',
+    };
+    SignInWithApple.authorize(options)
+  .then((result) => {
+    // Handle user information
+    alert(JSON.stringify(result))
+    // Validate token with server and create new session
+  })
+  .catch(error => {
+    alert(JSON.stringify(error))
+    // Handle error
+  });
+    // const googleUser = (await SignInWithApple.Authorize()) as any;
+    // console.log('my user: ', googleUser);
+    //  this.common.startLoader();
+    //  alert(JSON.stringify(googleUser))
+    //  let emailpart=googleUser.email
+    //  this.service
+    //    .login({
+    //      email:emailpart,
+    //      role: 'cleaner',
+    //      signUpWithGoogle: false,
+    //      signUpWithApple:true,
+    //      signUpWithFacebook: false,
+    //      API_KEY: 'SOOLAH8F3D091909DC29SECRET',
+    //    }).subscribe(
+    //      (res: any) => {
+    //        if(res.data.firstTimeUser) {
+    //          this.router.navigate(['/cleaner/register'],{ queryParams: { email: emailpart,signUpWithApple:true}});
+    //          this.common.stopLoader();
+    //        }
+    //        else {
+    //          this.service.setUserData(res.data);
+    //          this.service.setEncryptedToken(res.data.encryptedToken);
+    //          this.common.stopLoader();
+    //          this.loginForm.reset();
+    //          this.router.navigateByUrl('/' + this.role + '/home');
+    //        }
+    //      },
+    //      (err) => {
+    //        console.log(err)
+    //        this.common.stopLoader()
+    //        if(err.error.code==400) {
+    //          this.router.navigate(['/cleaner/register'],{ queryParams: { email: emailpart,signUpWithApple:true}});
+    //          this.common.stopLoader();
+    //        }
+    //        this.common.errorHandler(err.error)
+    //      }
+    //    );
    }
 
 
